@@ -1,0 +1,47 @@
+h1 {
+  text-align: center;
+  font-style: italic;
+}
+body{
+  background-color: #B87D95;
+}
+.container {
+}
+
+.well {
+  text-align: center;
+  background-color: #9768d1;
+  width: 600px;
+  display: block;
+  margin: 0 auto;
+  }
+
+.jumbotron {
+  background-color: #7b52ab;
+}
+
+.form-control {
+  width: 300px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.right {
+  float: left;
+  position: sticky;
+  left: 50%;
+}
+
+#leftHalf {
+  background: url("img/bg.jpg");
+  width: 50%;
+  position: static;
+  left: 0px;
+  height: 100%;
+}
+#example {
+  background: url("/img/bg.jpg");
+  background-repeat: no-repeat;
+  background-origin: border-box;
+}
