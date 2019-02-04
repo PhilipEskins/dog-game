@@ -5,16 +5,17 @@ function Dog(name, energy, toy) {
   this.name = name;
 }
 Dog.prototype.subEnergy = function() {
-  this.energy -= 1;
-  if (this.energy === 0) {
-    return 0;
-  }
-}
-Dog.prototype.nap = function() {
   if (this.energy === 0) {
     this.energy = 0;
   } else {
-    this.energy += 1;
+    this.energy -= 1;
+  }
+}
+Dog.prototype.nap = function() {
+  if (this.energy >= 100) {
+    this.energy = 100;
+  } else {
+    this.energy += 5;
   }
 }
 
@@ -39,9 +40,25 @@ human = new Human("Bob", 100, 10, []);
 
 var hour = 7;
 
-var subInterval = setInterval(subEnergy, 1000);
+var subIntervalHuman = setInterval(subEnergyHuman, 1000);
+var subIntervalDog = setInterval(subEnergyDog, 1000);
+var checkNap = setInterval(isNapTime, 1000);
 
-function subEnergy() {
+function isNapTime() {
+  if (dog.energy === 0) {
+    clearInterval(subIntervalDog);
+    dog.nap();
+  }
+  if (dog.energy <= 100) {
+    dog.nap();
+  }
+}
+
+function subEnergyDog() {
+  dog.subEnergy();
+}
+
+function subEnergyHuman() {
   human.subEnergy();
 }
 
