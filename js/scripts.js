@@ -42,13 +42,26 @@ function Timer(hour) {
   this.hour = hour;
 }
 
+// //Grocery store Object
+// function groceryStore() {
+//   energyBar = 5;
+// }
+// groceryStore.prototype.purchase = function(product, money) {
+//
+//   if(this.money <= product) {
+//
+//   }
+// }
+
 dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
 timer = new Timer(16);
 
 var subIntervalHuman = setInterval(subEnergyHuman, 6000);
-// var checkNap = setInterval(checkEnergy, 3000);
+var checkNap = setInterval(checkEnergy, 3000);
 var time = setInterval(addHour, 30000);
+var end = setInterval(checkEnd, 30000);
+
 
 //Check energy for Dog
 function checkEnergy() {
@@ -97,41 +110,71 @@ function dogPark() {
   return numOfDogs;
 }
 
+//Walk the dog function
 function walkDog(blocks) {
-  if (blocks === 5) {
+  if(timer.hour >=20) {
+    console.log("Its too late");
+  }
+  else if (blocks === 5) {
     if (dog.energy <= 60) {
       console.log("Your dog is too tired");
     } else {
       dog.subEnergy(10, blocks);
     }
   }
-  if (blocks === 4) {
+  else if (blocks === 4) {
     if (dog.energy <= 50) {
       console.log("Your dog is too tired");
     } else {
       dog.subEnergy(10, blocks);
     }
   }
-  if (blocks === 3) {
+  else if (blocks === 3) {
     if (dog.energy <= 40) {
       console.log("Your dog is too tired");
     } else {
       dog.subEnergy(10, blocks);
     }
   }
-  if (blocks === 2) {
+  else if (blocks === 2) {
     if (dog.energy <= 30) {
       console.log("Your dog is too tired");
     } else {
       dog.subEnergy(10, blocks);
     }
   }
-  if (blocks === 1) {
+  else if (blocks === 1) {
     if (dog.energy <= 20) {
       console.log("Your dog is too tired");
     } else {
       dog.subEnergy(10, blocks);
     }
+  }
+}
+
+//End of game
+function checkEnd() {
+  if(timer.hour === 21) {
+    if(dog.energy <= 10) {
+      console.log("You and your dog got a good nights rest");
+      human.money += 200;
+      clearInterval(end);
+    } else if(dog.energy > 10 && dog.energy < 50) {
+      console.log("Your dog was restless causing your sleep to be a little interrupted.");
+      human.money += 150;
+      clearInterval(end);
+    } else if (dog.energy > 50 && dog.energy < 90) {
+      console.log("Your dog was very restless causing your sleep to be mostly interrupted.");
+      human.money += 50;
+      clearInterval(end);
+    } else if (dog.energy >= 90) {
+      console.log("Your dog was still active, you had to stay up all night so you needed to call in sick for work.");
+      human.money += 0;
+      clearInterval(end);
+    }
+    clearInterval(subIntervalHuman);
+    clearInterval(checkNap);
+    clearInterval(time);
   }
 }
 
