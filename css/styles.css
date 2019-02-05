@@ -60,3 +60,45 @@ left: 50%;
 transform: translate(-50%, -50%);
 text-align: center;
 }
+
+.col-md-3 {
+  height: auto;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.col-md-6 {
+  height: auto;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.row {
+  font-size: 21.14px;
+}
+
+.border1 {
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+}
+.humanInfo{
+  float: left;
+}
+.pupInfo{
+  float: right;
+}
+
+#game {
+  display: none;
+}

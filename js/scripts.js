@@ -190,20 +190,17 @@ function checkEnd() {
 //UI Logic
 
 $(document).ready(function() {
-
-//toggle betweeen divs
-  $(".clickable").click(function() {
-    $(".startScreen").toggle();
-    $(".gamePlay").toggle();
-  }
-
   $("form#formOne").submit(function(event){
     event.preventDefault();
+    $("#startScreen").hide();
+    $("#game").show();
     console.log();
     var ownerInput = $("input#ownerName").val();
     var ownerChar = $("input:radio[name=owner]:checked").val();
     var dogInput = $("input#dogName").val();
     var dogChar = $("input:radio[name=pup]:checked").val();
+    $("#humanName").text(ownerInput);
+    $("#doggieName").text(dogInput);
     console.log(ownerInput);
     console.log(ownerChar);
     console.log(dogInput);

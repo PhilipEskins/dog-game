@@ -16,7 +16,7 @@
       <li><a href="about-us.html">About</a></li>
     </ul>
     <br>
-    <div class="container">
+    <div class="container" id="startScreen">
       <div class="split right">
         <div class="centered">
           <div class="jumbotron">
@@ -52,7 +52,7 @@
                   <input type="radio" name="pup" id="pup3" value="3">
                 </div>
               </div>
-              <a href="play-game.html"><input type="button" name="button" value="Click"></a>
+              <button type="submit" name="button">Start Game</button>
             </form>
           </div>
         </div>
@@ -62,5 +62,28 @@
         </div>
       </div>
     </div>
+  </div>
+
+    <div id="game">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span class="humanInfo">test</span>
+            <span class="pupInfo">test</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3"><span id="humanName"></span></div>
+          <div class="col-md-6">(everything in between)</div>
+          <div class="col-md-3"><span id="doggieName"></span></div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-3">Human Area</div>
+          <div class="col-md-6">Game Area</div>
+          <div class="col-md-3">Dog Area</div>
+      </div>
+    </div>
+
   </body>
 </html>
