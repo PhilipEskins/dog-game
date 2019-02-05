@@ -1,12 +1,5 @@
-$(document).ready(function() {
-  $("form#formOne").submit(function(event){
-    event.preventDefault();
-    console.log("submitted")
-    var ownerInput = $("input#ownerName").val();
-    var dogInput = $("input#dogName").val();
-    $("#answers").text(test(userInput));
-  })
-})
+
+
 //Dog object
 function Dog(name, energy, toy) {
   this.energy = energy;
@@ -74,3 +67,27 @@ function subEnergyHuman() {
 function addHour() {
   hour += 1;
 }
+
+
+
+
+
+//UI Logic
+
+$(document).ready(function() {
+
+  $("form#formOne").submit(function(event){
+    event.preventDefault();
+    console.log();
+    var ownerInput = $("input#ownerName").val();
+    var ownerChar = $("input:radio[name=owner]:checked").val();
+    var dogInput = $("input#dogName").val();
+    var dogChar = $("input:radio[name=pup]:checked").val();
+    console.log(ownerInput);
+    console.log(ownerChar);
+    console.log(dogInput);
+    console.log(dogChar);
+    // $("#results").text(ownerInput);
+    // $("#results").text(dogInput);
+  });
+})
