@@ -43,9 +43,10 @@ function Timer(hour) {
 }
 
 //Grocery store Object
-// function groceryStore() {
-//   inventory: {'energyBar': cost:5 }
-// }
+function GroceryStore() {
+  items =[{type: energybar}];
+  var energyBar = {name: "EnergyBar", cost: 5};
+}
 
 dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
@@ -207,7 +208,7 @@ $(document).ready(function() {
     var dogChar = $("input:radio[name=pup]:checked").val();
     $("#humanName").text(ownerInput);
     $("#doggieName").text(dogInput);
-    gameTime();
+    gameTime(gameStatus);
 
     if (ownerChar === "1") {
       $("#humanPic").append('<img src="img/woman1.png" alt="Human Female">');
