@@ -42,15 +42,9 @@ function Timer(hour) {
   this.hour = hour;
 }
 
-// //Grocery store Object
+//Grocery store Object
 // function groceryStore() {
-//   energyBar = 5;
-// }
-// groceryStore.prototype.purchase = function(product, money) {
-//
-//   if(this.money <= product) {
-//
-//   }
+//   inventory: {'energyBar': cost:5 }
 // }
 
 dog = new Dog("Fido", 100, " ", "home");
@@ -100,7 +94,7 @@ function dogPark() {
   var numOfDogs = Math.floor(Math.random() * 6);
   if (timer.hour >= 19) {
     console.log("Its too late");
-  } else if (dog.energy <= 50) {
+  } else if (dog.energy <= 50 || dog.status === "sleeping") {
       console.log("Your dog is too tired");
   } else if (numOfDogs === 0) {
       dog.subEnergy(20, 1);
@@ -112,43 +106,58 @@ function dogPark() {
 
 //Walk the dog function
 function walkDog(blocks) {
-  if(timer.hour >=20) {
-    console.log("Its too late");
-  }
-  else if (blocks === 5) {
-    if (dog.energy <= 60) {
-      console.log("Your dog is too tired");
-    } else {
-      dog.subEnergy(10, blocks);
+  if (dog.status === "awake") {
+    if(timer.hour >=20) {
+      console.log("Its too late");
+    }
+    else if (blocks === 5) {
+      if (dog.energy <= 60) {
+        console.log("Your dog is too tired");
+      } else {
+        dog.subEnergy(10, blocks);
+      }
+    }
+    else if (blocks === 4) {
+      if (dog.energy <= 50) {
+        console.log("Your dog is too tired");
+      } else {
+        dog.subEnergy(10, blocks);
+      }
+    }
+    else if (blocks === 3) {
+      if (dog.energy <= 40) {
+        console.log("Your dog is too tired");
+      } else {
+        dog.subEnergy(10, blocks);
+      }
+    }
+    else if (blocks === 2) {
+      if (dog.energy <= 30) {
+        console.log("Your dog is too tired");
+      } else {
+        dog.subEnergy(10, blocks);
+      }
+    }
+    else if (blocks === 1) {
+      if (dog.energy <= 20) {
+        console.log("Your dog is too tired");
+      } else {
+        dog.subEnergy(10, blocks);
+      }
     }
   }
-  else if (blocks === 4) {
-    if (dog.energy <= 50) {
-      console.log("Your dog is too tired");
-    } else {
-      dog.subEnergy(10, blocks);
-    }
+  else {
+    console.log("Your dog is napping");
   }
-  else if (blocks === 3) {
-    if (dog.energy <= 40) {
-      console.log("Your dog is too tired");
-    } else {
-      dog.subEnergy(10, blocks);
-    }
+}
+
+//Play with your dog
+function playDog() {
+  if (dog.status === "awake") {
+    dog.subEnergy(5, 1);
   }
-  else if (blocks === 2) {
-    if (dog.energy <= 30) {
-      console.log("Your dog is too tired");
-    } else {
-      dog.subEnergy(10, blocks);
-    }
-  }
-  else if (blocks === 1) {
-    if (dog.energy <= 20) {
-      console.log("Your dog is too tired");
-    } else {
-      dog.subEnergy(10, blocks);
-    }
+  else {
+    console.log("Your dog is napping");
   }
 }
 
