@@ -30,7 +30,6 @@ li a {
   text-decoration: none;
 }
 
-
 .well {
   text-align: center;
   color: black;
@@ -50,11 +49,20 @@ li a {
   background:  url("../img/bluepups.png");
   color: #FFCC0A;
 }
-
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 80px;
+}
 .right {
-  float: left;
-  position: sticky;
-  left: 60%;
+  right: 0;
+}
+.left{
+  left: 0;
 }
 
 .row {
@@ -96,4 +104,7 @@ li a {
 }
 .startScreen{
   background: url("..img/bluepups.png")
+}
+#partTwo{
+width: default;
 }
