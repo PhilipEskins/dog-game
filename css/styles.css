@@ -2,17 +2,12 @@ h1 {
   text-align: center;
   font-style: ;
   text-align: center;
-
+  text-shadow: 2px 4px 6px #000000;
 }
-
 body {
-  /* background: url("../img/bg.jpeg");
-  background-repeat: no-repeat;
-  background-size: 50% 100%;
-  background-position: left; */
   font-family: PT serif;
+  background-color: #A9C0FF;
 }
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -20,11 +15,9 @@ ul {
   overflow: hidden;
   background-color: #333;
 }
-
 li {
   float: left;
 }
-
 li a {
   display: block;
   color: white;
@@ -32,66 +25,37 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 .well {
   text-align: center;
-  background-color: #9768d1;
-  width: 600px;
+  color: black;
+  background-color: #A9C0FF;
+  width: 500px;
   display: block;
   margin: 0 auto;
   }
-
-.form-control{
-  width: 300px;
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-}
 .jumbotron {
-  background:  url("../img/expl.jpg");
-  color:white;
+  background:  url("../img/bluepups.png");
+  color: #FFFFFF;
 }
-
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 80px;
+}
 .right {
-  float: left;
-  position: sticky;
-  left: 60%;
+  right: 0;
 }
-
-.row {
-  font-size: 21.14px;
+.left{
+  left: 0;
 }
-
-.border1 {
-  border-style: solid;
-  border-width: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-
-.timer{
-  float: right;
-}
-
-.money {
-  float: left;
-}
-.col-md-3 {
-  height: 600px;
-  text-align: center;
-  border-style: solid;
-  border-width: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-.col-md-6 {
-  height: 600px;
-  text-align: center;
-  border-style: solid;
-  border-width: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
+.centered {
+  position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
 }
