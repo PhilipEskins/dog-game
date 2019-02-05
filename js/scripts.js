@@ -1,10 +1,10 @@
-
-
 //Dog object
-function Dog(name, energy, toy) {
+function Dog(name, energy, toy, location) {
   this.energy = energy;
   this.toy = toy;
   this.name = name;
+  this.status = "awake";
+  this.location = location;
 }
 Dog.prototype.subEnergy = function() {
   if (this.energy === 0) {
@@ -14,19 +14,16 @@ Dog.prototype.subEnergy = function() {
   }
 }
 Dog.prototype.nap = function() {
-  if (this.energy >= 100) {
-    this.energy = 100;
-  } else {
-    this.energy += 5;
-  }
+  this.energy += 1;
 }
 
 //Human Object
-function Human(name, money, energy, inventory) {
+function Human(name, money, energy, inventory, location) {
   this.name = name;
   this.money = money;
   this.energy = energy;
   this.inventory = inventory;
+  this.location = location;
 }
 
 Human.prototype.subEnergy = function() {
@@ -37,40 +34,66 @@ Human.prototype.subEnergy = function() {
   }
 }
 
-dog = new Dog("Fido", 10);
-human = new Human("Bob", 100, 10, []);
+//Timer object
+function Timer(hour) {
+  this.hour = hour;
+}
 
-var hour = 7;
+dog = new Dog("Fido", 100, " ", "home");
+human = new Human("Bob", 100, 100, [], "home");
+timer = new Timer(16);
 
-var subIntervalHuman = setInterval(subEnergyHuman, 1000);
-var subIntervalDog = setInterval(subEnergyDog, 1000);
-var checkNap = setInterval(isNapTime, 1000);
+var subIntervalHuman = setInterval(subEnergyHuman, 6000);
+// var checkNap = setInterval(checkEnergy, 3000);
+var time = setInterval(addHour, 30000);
 
-function isNapTime() {
-  if (dog.energy === 0) {
-    clearInterval(subIntervalDog);
+//Check energy for Dog
+function checkEnergy() {
+  if (dog.status === "awake") {
+    dog.subEnergy();
+  }
+  if (dog.status === "sleeping") {
     dog.nap();
   }
-  if (dog.energy <= 100) {
-    dog.nap();
+  if (dog.energy <= 0 && dog.location === "home"){
+    dog.status = "sleeping";
+  }
+  if (dog.energy >= 100) {
+    dog.status = "awake";
   }
 }
 
-function subEnergyDog() {
-  dog.subEnergy();
-}
-
+//Human loses energy
 function subEnergyHuman() {
   human.subEnergy();
 }
 
+//Time function (game resets after 5 hours pass)
 function addHour() {
-  hour += 1;
+  if (timer.hour === 21) {
+    timer.hour = 16;
+  } else {
+    timer.hour += 1;
+  }
+  console.log(timer.hour);
 }
 
-
-
-
+//Dog park function
+function dogPark(minutes) {
+  var numOfDogs = 0
+  // Math.floor(Math.random() * 6);
+  var convertTime = (minutes * 60) * 1000;
+  function subEnergyDog() {
+    dog.subEnergy();
+  }
+  if (numOfDogs === 0) {
+    setInterval(subEnergyDog, convertTime);
+  } else if (numOfDogs >= 1) {
+    setInterval(subEnergyDog, 1000);
+  }
+  return convertTime;
+  return numOfDogs;
+}
 
 //UI Logic
 
