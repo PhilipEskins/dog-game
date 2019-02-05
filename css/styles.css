@@ -51,6 +51,7 @@ li a {
 }
 .left{
   left: 0;
+  object-fit: contain;
 }
 .centered {
   position: absolute;
