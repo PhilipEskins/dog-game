@@ -50,12 +50,23 @@ function Timer(hour) {
 dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
 timer = new Timer(16);
+var gameStatus = "active";
 
-var subIntervalHuman = setInterval(subEnergyHuman, 6000);
-var checkNap = setInterval(checkEnergy, 3000);
-var time = setInterval(addHour, 30000);
-var end = setInterval(checkEnd, 30000);
+function gameTime(gameStatus) {
+  if (gameStatus === "active"){
+    var subIntervalHuman = setInterval(subEnergyHuman, 6000);
+    var checkNap = setInterval(checkEnergy, 3000);
+    var time = setInterval(addHour, 30000);
+    var end = setInterval(checkEnd, 30000);
+  }
 
+  if (gameStatus === "ended") {
+    clearInterval(subIntervalHuman);
+    clearInterval(checkNap);
+    clearInterval(time);
+    clearInterval(end)
+  }
+}
 
 //Check energy for Dog
 function checkEnergy() {
@@ -167,23 +178,18 @@ function checkEnd() {
     if(dog.energy <= 10) {
       console.log("You and your dog got a good nights rest");
       human.money += 200;
-      clearInterval(end);
     } else if(dog.energy > 10 && dog.energy < 50) {
       console.log("Your dog was restless causing your sleep to be a little interrupted.");
       human.money += 150;
-      clearInterval(end);
     } else if (dog.energy > 50 && dog.energy < 90) {
       console.log("Your dog was very restless causing your sleep to be mostly interrupted.");
       human.money += 50;
-      clearInterval(end);
     } else if (dog.energy >= 90) {
       console.log("Your dog was still active, you had to stay up all night so you needed to call in sick for work.");
       human.money += 0;
-      clearInterval(end);
     }
-    clearInterval(subIntervalHuman);
-    clearInterval(checkNap);
-    clearInterval(time);
+    gameStatus === "ended";
+    gameTime(gameStatus);
   }
 }
 
@@ -201,6 +207,11 @@ $(document).ready(function() {
     var dogChar = $("input:radio[name=pup]:checked").val();
     $("#humanName").text(ownerInput);
     $("#doggieName").text(dogInput);
+    gameTime();
+
+    if (ownerChar === "1") {
+      $("#humanPic").append('<img src="img/woman1.png" alt="Human Female">');
+    }
     console.log(ownerInput);
     console.log(ownerChar);
     console.log(dogInput);
