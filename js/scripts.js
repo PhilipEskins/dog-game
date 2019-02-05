@@ -43,8 +43,8 @@ dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
 timer = new Timer(16);
 
-var subIntervalHuman = setInterval(subEnergyHuman, 1000);
-var checkNap = setInterval(checkEnergy, 1000);
+var subIntervalHuman = setInterval(subEnergyHuman, 6000);
+// var checkNap = setInterval(checkEnergy, 3000);
 var time = setInterval(addHour, 30000);
 
 //Check energy for Dog
@@ -55,13 +55,12 @@ function checkEnergy() {
   if (dog.status === "sleeping") {
     dog.nap();
   }
-  if (dog.energy <= 0){
+  if (dog.energy <= 0 && dog.location === "home"){
     dog.status = "sleeping";
   }
   if (dog.energy >= 100) {
     dog.status = "awake";
   }
-  console.log(dog.energy);
 }
 
 //Human loses energy
@@ -77,6 +76,23 @@ function addHour() {
     timer.hour += 1;
   }
   console.log(timer.hour);
+}
+
+//Dog park function
+function dogPark(minutes) {
+  var numOfDogs = 0
+  // Math.floor(Math.random() * 6);
+  var convertTime = (minutes * 60) * 1000;
+  function subEnergyDog() {
+    dog.subEnergy();
+  }
+  if (numOfDogs === 0) {
+    setInterval(subEnergyDog, convertTime);
+  } else if (numOfDogs >= 1) {
+    setInterval(subEnergyDog, 1000);
+  }
+  return convertTime;
+  return numOfDogs;
 }
 
 $(document).ready(function() {
