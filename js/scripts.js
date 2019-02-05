@@ -97,7 +97,14 @@ function dogPark(minutes) {
 
 //UI Logic
 
+
 $(document).ready(function() {
+
+//toggle betweeen divs
+  $(".clickable").click(function() {
+    $(".startScreen").toggle();
+    $(".gamePlay").toggle();
+  }
 
   $("form#formOne").submit(function(event){
     event.preventDefault();
