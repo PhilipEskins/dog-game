@@ -2,14 +2,11 @@ h1 {
   text-align: center;
   font-style: ;
   text-align: center;
+  text-shadow: 2px 4px 6px #000000;
 
 }
 
 body {
-  /* background: url("../img/bg.jpeg");
-  background-repeat: no-repeat;
-  background-size: 50% 100%;
-  background-position: left; */
   font-family: PT serif;
 }
 
@@ -33,10 +30,12 @@ li a {
   text-decoration: none;
 }
 
+
 .well {
   text-align: center;
-  background-color: #9768d1;
-  width: 600px;
+  color: black;
+  background-color: #FFCC0A;
+  width: 500px;
   display: block;
   margin: 0 auto;
   }
@@ -48,8 +47,8 @@ li a {
   margin: 0 auto;
 }
 .jumbotron {
-  background:  url("../img/expl.jpg");
-  color:white;
+  background:  url("../img/bluepups.png");
+  color: #FFCC0A;
 }
 
 .right {
@@ -94,4 +93,7 @@ li a {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+}
+.startScreen{
+  background: url("..img/bluepups.png")
 }
