@@ -1,11 +1,36 @@
 h1 {
   text-align: center;
-  font-style: italic;
+  font-style: ;
+  text-align: center;
+
 }
-body{
-  background-color: #B87D95;
+
+body {
+  /* background: url("../img/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  background-position: left; */
+  font-family: PT serif;
 }
-.container {
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 .well {
@@ -16,32 +41,57 @@ body{
   margin: 0 auto;
   }
 
-.jumbotron {
-  background-color: #7b52ab;
-}
-
-.form-control {
+.form-control{
   width: 300px;
   display: block;
   text-align: center;
   margin: 0 auto;
 }
+.jumbotron {
+  background:  url("../img/expl.jpg");
+  color:white;
+}
 
 .right {
   float: left;
   position: sticky;
-  left: 50%;
+  left: 60%;
 }
 
-#leftHalf {
-  background: url("img/bg.jpg");
-  width: 50%;
-  position: static;
-  left: 0px;
-  height: 100%;
+.row {
+  font-size: 21.14px;
 }
-#example {
-  background: url("/img/bg.jpg");
-  background-repeat: no-repeat;
-  background-origin: border-box;
+
+.border1 {
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.timer{
+  float: right;
+}
+
+.money {
+  float: left;
+}
+.col-md-3 {
+  height: 600px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.col-md-6 {
+  height: 600px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }

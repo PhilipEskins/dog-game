@@ -95,12 +95,22 @@ function dogPark(minutes) {
   return numOfDogs;
 }
 
+//UI Logic
+
 $(document).ready(function() {
+
   $("form#formOne").submit(function(event){
     event.preventDefault();
-    console.log("submitted")
+    console.log();
     var ownerInput = $("input#ownerName").val();
+    var ownerChar = $("input:radio[name=owner]:checked").val();
     var dogInput = $("input#dogName").val();
-    $("#answers").text(test(userInput));
-  })
+    var dogChar = $("input:radio[name=pup]:checked").val();
+    console.log(ownerInput);
+    console.log(ownerChar);
+    console.log(dogInput);
+    console.log(dogChar);
+    // $("#results").text(ownerInput);
+    // $("#results").text(dogInput);
+  });
 })
