@@ -6,15 +6,18 @@ function Dog(name, energy, toy, location) {
   this.status = "awake";
   this.location = location;
 }
-Dog.prototype.subEnergy = function() {
-  if (this.energy === 0) {
+Dog.prototype.subEnergy = function(lump, multi) {
+  if (lump >= 0) {
+    this.energy -=lump*multi;
+  }
+  if (this.energy <= 0) {
     this.energy = 0;
   } else {
     this.energy -= 1;
   }
 }
 Dog.prototype.nap = function() {
-  this.energy += 1;
+  this.energy += 5;
 }
 
 //Human Object
@@ -68,7 +71,7 @@ function subEnergyHuman() {
   human.subEnergy();
 }
 
-//Time function (game resets after 5 hours pass)
+//Time function (game resets after 5 hours have passed)
 function addHour() {
   if (timer.hour === 21) {
     timer.hour = 16;
@@ -79,24 +82,60 @@ function addHour() {
 }
 
 //Dog park function
-function dogPark(minutes) {
-  var numOfDogs = 0
-  // Math.floor(Math.random() * 6);
-  var convertTime = (minutes * 60) * 1000;
-  function subEnergyDog() {
-    dog.subEnergy();
+function dogPark() {
+  //Generates random number of dogs 0 to 5
+  var numOfDogs = Math.floor(Math.random() * 6);
+  if (timer.hour >= 19) {
+    console.log("Its too late");
+  } else if (dog.energy <= 50) {
+      console.log("Your dog is too tired");
+  } else if (numOfDogs === 0) {
+      dog.subEnergy(20, 1);
+  } else {
+    dog.subEnergy(20, numOfDogs);
   }
-  if (numOfDogs === 0) {
-    setInterval(subEnergyDog, convertTime);
-  } else if (numOfDogs >= 1) {
-    setInterval(subEnergyDog, 1000);
-  }
-  return convertTime;
   return numOfDogs;
 }
 
-//UI Logic
+function walkDog(blocks) {
+  if (blocks === 5) {
+    if (dog.energy <= 60) {
+      console.log("Your dog is too tired");
+    } else {
+      dog.subEnergy(10, blocks);
+    }
+  }
+  if (blocks === 4) {
+    if (dog.energy <= 50) {
+      console.log("Your dog is too tired");
+    } else {
+      dog.subEnergy(10, blocks);
+    }
+  }
+  if (blocks === 3) {
+    if (dog.energy <= 40) {
+      console.log("Your dog is too tired");
+    } else {
+      dog.subEnergy(10, blocks);
+    }
+  }
+  if (blocks === 2) {
+    if (dog.energy <= 30) {
+      console.log("Your dog is too tired");
+    } else {
+      dog.subEnergy(10, blocks);
+    }
+  }
+  if (blocks === 1) {
+    if (dog.energy <= 20) {
+      console.log("Your dog is too tired");
+    } else {
+      dog.subEnergy(10, blocks);
+    }
+  }
+}
 
+//UI Logic
 $(document).ready(function() {
 
   $("form#formOne").submit(function(event){
