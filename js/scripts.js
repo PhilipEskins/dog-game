@@ -59,24 +59,27 @@ dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
 timer = new Timer(16);
 
+var subIntervalHuman;
+var checkNap;
+var time;
+var end;
+
 function gameTime(gameStatus) {
+  if (gameStatus === "active") {
+    subIntervalHuman = setInterval(subEnergyHuman, 6000);
+    checkNap = setInterval(checkEnergy, 3000);
+    time = setInterval(addHour, 30000);
+    end = setInterval(checkEnd, 30010);
+    console.log(end);
+  }
+
   if (gameStatus === "ended") {
     clearInterval(subIntervalHuman);
     clearInterval(checkNap);
     clearInterval(time);
     clearInterval(end);
     console.log(gameStatus);
-    // subIntervalHuman = 0;
-    // checkNap = 0;
-    // time = 0;
-    // end = 0;
-    console.log(end); }
-
-  if (gameStatus === "active") {
-    var subIntervalHuman = setInterval(subEnergyHuman, 6000);
-    var checkNap = setInterval(checkEnergy, 3000);
-    var time = setInterval(addHour, 30000);
-    var end = setInterval(checkEnd, 30010);
+    console.log(end);
   }
 }
 
@@ -274,4 +277,3 @@ $(document).ready(function() {
   }
 
   });
-
