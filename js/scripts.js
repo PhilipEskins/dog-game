@@ -237,22 +237,24 @@ function purchaseToy(human, item) {
 function checkEnd() {
   if(timer.hour === 21) {
     if(dog.energy <= 10) {
-      console.log("You and your dog got a good nights rest");
+      $("#gameResult").text("You and your dog got a good nights rest");
       human.money += 200;
     } else if(dog.energy > 10 && dog.energy < 50) {
-      console.log("Your dog was restless causing your sleep to be a little interrupted.");
+      $("#gameResult").text("Your dog was restless causing your sleep to be a little interrupted.");
       human.money += 150;
     } else if (dog.energy > 50 && dog.energy < 90) {
-      console.log("Your dog was very restless causing your sleep to be mostly interrupted.");
+      $("#gameResult").text("Your dog was very restless causing your sleep to be mostly interrupted.");
       human.money += 50;
     } else if (dog.energy >= 90) {
-      console.log("Your dog was still active, you had to stay up all night so you needed to call in sick for work.");
+      $("#gameResult").text("Your dog was still active, you had to stay up all night so you needed to call in sick for work.");
       human.money += 0;
     }
     timer.status = "ended";
     gameTime(timer.status);
   }
 }
+
+
 
 //UI Logic
 
@@ -289,13 +291,6 @@ $(document).ready(function() {
     }
 
 
-
-    console.log(ownerInput);
-    console.log(ownerChar);
-    console.log(dogInput);
-    console.log(dogChar);
-    // $("#results").text(ownerInput);
-    // $("#results").text(dogInput);
   });
 
 
@@ -313,11 +308,20 @@ $(document).ready(function() {
     dogPark();
     console.log(dog.energy);
     });
-  $("#playDog").click(function(event){
+  $("#play").click(function(event){
     playDog();
     console.log(dog.status);
-  });
-  $("#pupEnergyLevel").click(function(event){
 
-  })
+   });
+
+
+function continueRefreshing(){
+  $("#timeRemaining").text(timer.hour + ":00");
+  $("#remainingHumanEnergy").text(human.energy);
+  $("#remainingDogEnergy").text(dog.energy);
+  $("#yourDogsStatus").text(dog.status);
+
+}
+  setInterval(continueRefreshing, 1000);
+
 });

@@ -6,7 +6,7 @@ h1 {
 }
 body {
   font-family: PT serif;
-  background-color: #A9C0FF;
+  background:  url("../img/bluepups.png");
 }
 ul {
   list-style-type: none;
@@ -27,15 +27,15 @@ li a {
 }
 .well {
   text-align: center;
-  color: black;
-  background-color: #A9C0FF;
+  color: white;
+  background-color: #417187;
   width: 500px;
   display: block;
   margin: 0 auto;
   }
 .jumbotron {
-  background:  url("../img/bluepups.png");
   color: #FFFFFF;
+  background-color: #3C677C;
 }
 .split {
   height: 100%;
@@ -63,7 +63,8 @@ li a {
 }
 
 .col-md-3 {
-  height: auto;
+  background-color: #CCCBB1;
+  height: 100px;
   text-align: center;
   border-style: solid;
   border-width: 5px;
@@ -72,7 +73,28 @@ li a {
   padding-left: 10px;
 }
 .col-md-6 {
-  height: auto;
+  background-color: #CCCBB1;
+  height: 100px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#lowerMiddleBlock {
+  background-color: #CCCBB1;
+  height: 1000px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#lowerOuterBlocks {
+  background-color: #CCCBB1;
+  height: 1000px;
   text-align: center;
   border-style: solid;
   border-width: 5px;
@@ -81,13 +103,6 @@ li a {
   padding-left: 10px;
 }
 
-/* .col-md-12 {
-  border-style: solid;
-  border-width: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-} */
 .row {
   font-size: 21.14px;
 }
@@ -99,23 +114,22 @@ li a {
   padding-bottom: 10px;
   padding-left: 10px;
 }
-
-}
+/* #blocks{
+  width: 250px;
+  align: center;
+} */
 #humanName{
   float: left;
 }
 #pupName{
   float: right;
 }
-
-#dogPic img {
-  width: 100%;
+/* #startScreen{
+  display: none;
+} */
+input[type="radio"]{
+  margin: 0 15px 0 15px;
 }
-
-#humanPic img {
-  width: 100%;
-}
-
 #game {
   display: none;
 }
