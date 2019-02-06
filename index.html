@@ -22,14 +22,15 @@
           <div class="jumbotron">
             <h1>Dog Owner Simulator</h1>
             <hr>
-            <p class="well"> Welcome to our game! This 5 minute game will test your responsibilities as a virtual dog owner. Basicresponsibilities include taking your dog on a walk, to a dog park to a pet store, as well as grocery shopping. </p>
+            <p class="well"> Welcome to our game! This 5 minute game will test your responsibilities as a virtual dog owner. Basic responsibilities include taking your dog on a walk, to a dog park to a pet store, as well as grocery shopping. </p>
           </div>
           <div class="well">
             <form id="formOne">
               <div class="form-group">
                 <div class="row">
-                  <label for="ownerName">Enter owner name:</label>
+                  <label for="ownerName">What's your name?</label>
                   <input id="ownerName" class="form-control" type="text">
+                  <h5>Choose an avatar:</h5>
                   <img src="img/woman1.png" alt="woman" height="42" width="42">
                   <img src="img/icon2.png" alt="woman" height="42" width="42">
                   <img src="img/icon3.png" alt="woman" height="42" width="42">
@@ -41,8 +42,9 @@
               </div>
               <div class="form-group">
                 <div class="row">
-                  <label for="dogName">Enter dog name:</label>
+                  <label for="dogName">Name your dog here:</label>
                   <input id="dogName" class="form-control"  type="text">
+                  <h5>Choose a pretend pup:</h5>
                   <img src="img/pup1.png" alt="pup" height="42" width="42">
                   <img src="img/pup2.png" alt="pup" height="42" width="42">
                   <img src="img/pup3.png" alt="pup" height="42" width="42">
@@ -68,7 +70,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <p>Hello, <span id="humanName"></span>!</p>
+            <p>Hello, <span id="humanName"></span></p>
           </div>
           <div class="col-md-6">
             <p>What time is it?</p>
@@ -87,11 +89,13 @@
           <div class="col-md-6" id="lowerMiddleBlock">
             <p><em>Here is where you will choose what activities to participate in with your sweet pup. </em></p>
             <hr>
-            <p>Is your dog awake? Let's check.</p>
+            <h2>Activities:</h2>
+            <br>
+            <h4>Is your dog awake? Let's check.</h4>
             <button type="click" id="play" name="button">Play with your Dog</button>
             <br>
             <br>
-            <p>Let's go for a walk! Choose how many blocks you'd like to go with <span id="doggieName"></span>.</p>
+            <h4>Let's go for a walk! Choose how many blocks you'd like to go with <span id="doggieName"></span>.</h4>
             <select class="form-control" id="blocks">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -102,9 +106,11 @@
             <button type="click" id="walkDog" name="button">Walk your Dog</button>
             <br>
             <br>
-            <p>Take your pup to the park! Depending on how many other dogs are there, your pup might tire themselves out in no time.</p>
+            <h4>Take your pup to the park! Depending on how many other dogs are there, your pup might tire themselves out in no time.</h4>
             <button type="click" id="dogPark" name="button">Take Your Dog to Park</button>
             <br>
+            <h2>Game Result:
+              <br><span id="gameResult"></span></h2>
           </div>
           <div class="col-md-3" id="lowerOuterBlocks">
             <p>Your good boy: </p>

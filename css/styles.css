@@ -6,7 +6,7 @@ h1 {
 }
 body {
   font-family: PT serif;
-  background-color: #A9C0FF;
+  background:  url("../img/bluepups.png");
 }
 ul {
   list-style-type: none;
@@ -27,15 +27,15 @@ li a {
 }
 .well {
   text-align: center;
-  color: black;
-  background-color: #A9C0FF;
+  color: white;
+  background-color: #417187;
   width: 500px;
   display: block;
   margin: 0 auto;
   }
 .jumbotron {
-  background:  url("../img/bluepups.png");
   color: #FFFFFF;
+  background-color: #3C677C;
 }
 .split {
   height: 100%;
@@ -63,6 +63,7 @@ li a {
 }
 
 .col-md-3 {
+  background-color: #CCCBB1;
   height: 100px;
   text-align: center;
   border-style: solid;
@@ -72,6 +73,7 @@ li a {
   padding-left: 10px;
 }
 .col-md-6 {
+  background-color: #CCCBB1;
   height: 100px;
   text-align: center;
   border-style: solid;
@@ -81,6 +83,7 @@ li a {
   padding-left: 10px;
 }
 #lowerMiddleBlock {
+  background-color: #CCCBB1;
   height: 1000px;
   text-align: center;
   border-style: solid;
@@ -90,6 +93,7 @@ li a {
   padding-left: 10px;
 }
 #lowerOuterBlocks {
+  background-color: #CCCBB1;
   height: 1000px;
   text-align: center;
   border-style: solid;
@@ -120,10 +124,12 @@ li a {
 #pupName{
   float: right;
 }
-#startScreen{
-  display: none;
-}
-
-/* #game {
+/* #startScreen{
   display: none;
 } */
+input[type="radio"]{
+  margin: 0 15px 0 15px;
+}
+#game {
+  display: none;
+}
