@@ -40,32 +40,43 @@ Human.prototype.subEnergy = function() {
 //Timer object
 function Timer(hour) {
   this.hour = hour;
+  this.status = "active";
 }
 
 //Grocery store Object
 function GroceryStore() {
-  items =[{type: energybar}];
-  var energyBar = {name: "EnergyBar", cost: 5};
+  this.energy = {name: "Energy Bar", cost: 5, energy: 50};
+}
+
+//Pet Store Object
+function PetStore() {
+  this.rope = {name: "Rope", cost: 5, extra: 2};
+  this.ball = {name: "Ball", cost: 10, extra: 3};
+  this.plush = {name: "Squeak Toy", cost: 15, extra: 4};
 }
 
 dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
 timer = new Timer(16);
-var gameStatus = "active";
 
 function gameTime(gameStatus) {
-  if (gameStatus === "active"){
-    var subIntervalHuman = setInterval(subEnergyHuman, 6000);
-    var checkNap = setInterval(checkEnergy, 3000);
-    var time = setInterval(addHour, 30000);
-    var end = setInterval(checkEnd, 30000);
-  }
-
   if (gameStatus === "ended") {
     clearInterval(subIntervalHuman);
     clearInterval(checkNap);
     clearInterval(time);
-    clearInterval(end)
+    clearInterval(end);
+    console.log(gameStatus);
+    // subIntervalHuman = 0;
+    // checkNap = 0;
+    // time = 0;
+    // end = 0;
+    console.log(end); }
+
+  if (gameStatus === "active") {
+    var subIntervalHuman = setInterval(subEnergyHuman, 6000);
+    var checkNap = setInterval(checkEnergy, 3000);
+    var time = setInterval(addHour, 30000);
+    var end = setInterval(checkEnd, 30010);
   }
 }
 
@@ -189,9 +200,9 @@ function checkEnd() {
       console.log("Your dog was still active, you had to stay up all night so you needed to call in sick for work.");
       human.money += 0;
     }
-    gameStatus === "ended";
-    gameTime(gameStatus);
+    timer.status = "ended";
   }
+  gameTime(timer.status);
 }
 
 //UI Logic
@@ -208,7 +219,7 @@ $(document).ready(function() {
     var dogChar = $("input:radio[name=pup]:checked").val();
     $("#humanName").text(ownerInput);
     $("#doggieName").text(dogInput);
-    gameTime(gameStatus);
+    gameTime(timer.status);
 
     if (ownerChar === "1") {
       $("#humanPic").append('<img src="img/woman1.png" alt="Human Female">');
@@ -220,4 +231,9 @@ $(document).ready(function() {
     // $("#results").text(ownerInput);
     // $("#results").text(dogInput);
   });
+
+  $("#dogWalk").click(function(event){
+    var blocks = $("#blocks").val();
+    dogWalk(blocks);
+  })
 })
