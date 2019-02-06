@@ -53,12 +53,13 @@ li a {
   left: 0;
   object-fit: contain;
 }
+
 .centered {
   position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .col-md-3 {
@@ -79,6 +80,14 @@ text-align: center;
   padding-bottom: 10px;
   padding-left: 10px;
 }
+
+/* .col-md-12 {
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+} */
 .row {
   font-size: 21.14px;
 }
@@ -92,13 +101,17 @@ text-align: center;
 }
 
 }
-.humanInfo{
+#humanName{
   float: left;
 }
-.pupInfo{
+#pupName{
   float: right;
 }
 
-#game {
+/* #game {
+  display: none;
+} */
+
+#startScreen {
   display: none;
 }
