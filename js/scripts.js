@@ -59,24 +59,27 @@ dog = new Dog("Fido", 100, " ", "home");
 human = new Human("Bob", 100, 100, [], "home");
 timer = new Timer(16);
 
+var subIntervalHuman;
+var checkNap;
+var time;
+var end;
+
 function gameTime(gameStatus) {
+  if (gameStatus === "active") {
+    subIntervalHuman = setInterval(subEnergyHuman, 6000);
+    checkNap = setInterval(checkEnergy, 3000);
+    time = setInterval(addHour, 30000);
+    end = setInterval(checkEnd, 30000);
+    console.log(end);
+  }
+
   if (gameStatus === "ended") {
     clearInterval(subIntervalHuman);
     clearInterval(checkNap);
     clearInterval(time);
     clearInterval(end);
     console.log(gameStatus);
-    // subIntervalHuman = 0;
-    // checkNap = 0;
-    // time = 0;
-    // end = 0;
-    console.log(end); }
-
-  if (gameStatus === "active") {
-    var subIntervalHuman = setInterval(subEnergyHuman, 6000);
-    var checkNap = setInterval(checkEnergy, 3000);
-    var time = setInterval(addHour, 30000);
-    var end = setInterval(checkEnd, 30010);
+    console.log(end);
   }
 }
 
@@ -175,12 +178,58 @@ function walkDog(blocks) {
 }
 
 //Play with your dog
-function playDog() {
+function playDog(human) {
+  var ballCount = 0;
+  var ropeCount = 0;
+  var plushCount = 0;
+  var extra = 0;
+  for (var i = 0; i < human.inventory.length; i++) {
+    if (human.inventory[i].name === "Squeak Toy") {
+      plushCount++;
+      extra += human.inventory[i].extra;
+    }
+    if (human.inventory[i].name === "Rope") {
+      ropeCount++;
+      extra += human.inventory[i].extra;
+    }
+    if (human.inventory[i].name === "Ball") {
+      ballCount++;
+      extra += human.inventory[i].extra;
+    }
+  }
+
   if (dog.status === "awake") {
-    dog.subEnergy(5, 1);
+    if (extra === 0) {
+      dog.subEnergy(5, 1);
+    } else {
+      dog.subEnergy(5, extra);
+    }
   }
   else {
     console.log("Your dog is napping");
+  }
+  console.log(extra);
+}
+
+//Pet Store function
+function purchaseToy(human, item) {
+  var petStore = new PetStore();
+  var toy;
+  if (item === "rope") {
+    toy = petStore.rope;
+  }
+  if (item === "ball") {
+    toy = petStore.ball;
+  }
+  if (item === "plush") {
+    toy = petStore.plush;
+  }
+
+  if (human.money >= toy.cost) {
+    human.inventory.push(toy);
+    human.money -= toy.cost;
+  } else {
+    console.log("You can't afford that");
   }
 }
 
@@ -201,8 +250,8 @@ function checkEnd() {
       human.money += 0;
     }
     timer.status = "ended";
+    gameTime(timer.status);
   }
-  gameTime(timer.status);
 }
 
 
@@ -262,7 +311,8 @@ $(document).ready(function() {
   $("#play").click(function(event){
     playDog();
     console.log(dog.status);
-    });
+
+   });
 
 
 function continueRefreshing(){
@@ -273,6 +323,5 @@ function continueRefreshing(){
 
 }
   setInterval(continueRefreshing, 1000);
-
 
 });
