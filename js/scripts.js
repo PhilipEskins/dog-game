@@ -211,7 +211,24 @@ $(document).ready(function() {
 
     if (ownerChar === "1") {
       $("#humanPic").append('<img src="img/woman1.png" alt="Human Female">');
+    }else if (ownerChar === "2") {
+      $("#humanPic").append('<img src="img/icon2.png"  alt="Female2">');
     }
+    else if (ownerChar === "3") {
+      $("#humanPic").append('<img src="img/icon3.png"  alt="Female3">');
+    }
+
+    if (dogChar === "1") {
+      $("#dogPic").append('<img src="img/pup1.png" alt="nice pup">');
+    }else if (dogChar === "2") {
+      $("#dogPic").append('<img src="img/pup2.png"  alt="nice pup">');
+    }
+    else if (dogChar === "3") {
+      $("#dogPic").append('<img src="img/pup3.png"  alt="nice pup">');
+    }
+
+
+
     console.log(ownerInput);
     console.log(ownerChar);
     console.log(dogInput);
@@ -219,4 +236,19 @@ $(document).ready(function() {
     // $("#results").text(ownerInput);
     // $("#results").text(dogInput);
   });
-})
+
+  $("#walkDog").click(function(event){
+    var blocks = parseInt($("#blocks option:selected").text());
+      walkDog(blocks);
+      console.log(dog.energy);
+    });
+  $("#dogPark").click(function(event){
+    dogPark();
+    console.log(dog.energy);
+    });
+  $("#playDog").click(function(event){
+    playDog();
+    console.log(dog.status);
+    });
+
+  });

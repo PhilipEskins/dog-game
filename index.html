@@ -31,8 +31,8 @@
                   <label for="ownerName">Enter owner name:</label>
                   <input id="ownerName" class="form-control" type="text">
                   <img src="img/woman1.png" alt="woman" height="42" width="42">
-                  <img src="img/icon3.png" alt="woman" height="42" width="42">
                   <img src="img/icon2.png" alt="woman" height="42" width="42">
+                  <img src="img/icon3.png" alt="woman" height="42" width="42">
                   <br>
                   <input type="radio" name="owner" id="face1" value="1">
                   <input type="radio" name="owner" id="face2" value="2">
@@ -67,20 +67,24 @@
     <div id="game">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <span class="humanInfo">test</span>
-            <span class="pupInfo">test</span>
-          </div>
-        </div>
-        <div class="row">
           <div class="col-md-3"><span id="humanName"></span></div>
-          <div class="col-md-6">(everything in between)</div>
+          <div class="col-md-6">(display timer))</div>
           <div class="col-md-3"><span id="doggieName"></span></div>
-
         </div>
         <div class="row">
           <div class="col-md-3"><span id="humanPic"></span></div>
-          <div class="col-md-6">Game Area</div>
+          <div class="col-md-6">
+            <button type="click" id="dogPark" name="button">Take Your Dog to Park</button><br>
+            <select class="form-control" id="blocks">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button type="click" id="walkDog" name="button">Walk your Dog</button><br>
+            <button type="click" id="play" name="button">Play with your Dog</button>
+          </div>
           <div class="col-md-3"><span id="dogPic"><span></div>
       </div>
     </div>
