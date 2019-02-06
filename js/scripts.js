@@ -205,6 +205,13 @@ function checkEnd() {
   gameTime(timer.status);
 }
 
+
+// setTimeout(function(){
+//    window.location.reload(addHour);
+// }, 5000);
+
+console.log();
+
 //UI Logic
 
 $(document).ready(function() {
@@ -240,13 +247,6 @@ $(document).ready(function() {
     }
 
 
-
-    console.log(ownerInput);
-    console.log(ownerChar);
-    console.log(dogInput);
-    console.log(dogChar);
-    // $("#results").text(ownerInput);
-    // $("#results").text(dogInput);
   });
 
 
@@ -254,7 +254,6 @@ $(document).ready(function() {
     var blocks = $("#blocks").val();
     dogWalk(blocks);
   })
-})
 
   $("#walkDog").click(function(event){
     var blocks = parseInt($("#blocks option:selected").text());
@@ -265,13 +264,14 @@ $(document).ready(function() {
     dogPark();
     console.log(dog.energy);
     });
-  $("#playDog").click(function(event){
+  $("#play").click(function(event){
     playDog();
     console.log(dog.status);
     });
-  $("#pupEnergyLevel").click(function(event){
+function refreshTime(){
+  $("#timeRemaining").text(timer.hour + ":00");
+}
+  setInterval(refreshTime, 1000);
 
-  }
 
-  });
-
+});
