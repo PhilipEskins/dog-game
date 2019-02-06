@@ -63,7 +63,7 @@ li a {
 }
 
 .col-md-3 {
-  height: auto;
+  height: 100px;
   text-align: center;
   border-style: solid;
   border-width: 5px;
@@ -72,7 +72,25 @@ li a {
   padding-left: 10px;
 }
 .col-md-6 {
-  height: auto;
+  height: 100px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#lowerMiddleBlock {
+  height: 1000px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#lowerOuterBlocks {
+  height: 1000px;
   text-align: center;
   border-style: solid;
   border-width: 5px;
@@ -81,13 +99,6 @@ li a {
   padding-left: 10px;
 }
 
-/* .col-md-12 {
-  border-style: solid;
-  border-width: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-} */
 .row {
   font-size: 21.14px;
 }
@@ -99,19 +110,20 @@ li a {
   padding-bottom: 10px;
   padding-left: 10px;
 }
-
-}
+/* #blocks{
+  width: 250px;
+  align: center;
+} */
 #humanName{
   float: left;
 }
 #pupName{
   float: right;
 }
-
-#game {
+#startScreen{
   display: none;
 }
 
-/* #startScreen {
+/* #game {
   display: none;
 } */

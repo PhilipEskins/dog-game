@@ -79,13 +79,19 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3" id="lowerOuterBlocks">
             <p>It's you!</p>
             <p><span id="humanPic"></p>
             <p>Your energy level: <span id="remainingHumanEnergy"></span></p>
           </div>
-          <div class="col-md-6">
-            <button type="click" id="dogPark" name="button">Take Your Dog to Park</button><br>
+          <div class="col-md-6" id="lowerMiddleBlock">
+            <p><em>Here is where you will choose what activities to participate in with your sweet pup. </em></p>
+            <hr>
+            <p>Is your dog awake? Let's check.</p>
+            <button type="click" id="play" name="button">Play with your Dog</button>
+            <br>
+            <br>
+            <p>Let's go for a walk! Choose how many blocks you'd like to go with <span id="doggieName"></span>.</p>
             <select class="form-control" id="blocks">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -93,10 +99,14 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button type="click" id="walkDog" name="button">Walk your Dog</button><br>
-            <button type="click" id="play" name="button">Play with your Dog</button>
+            <button type="click" id="walkDog" name="button">Walk your Dog</button>
+            <br>
+            <br>
+            <p>Take your pup to the park! Depending on how many other dogs are there, your pup might tire themselves out in no time.</p>
+            <button type="click" id="dogPark" name="button">Take Your Dog to Park</button>
+            <br>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" id="lowerOuterBlocks">
             <p>Your good boy: </p>
               <span id="dogPic"></span>
             <p>Your dog is: <span id="yourDogsStatus"></span></p>

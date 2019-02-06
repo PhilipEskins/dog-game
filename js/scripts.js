@@ -268,6 +268,8 @@ $(document).ready(function() {
     playDog();
     console.log(dog.status);
     });
+
+    
 function continueRefreshing(){
   $("#timeRemaining").text(timer.hour + ":00");
   $("#remainingHumanEnergy").text(human.energy);
