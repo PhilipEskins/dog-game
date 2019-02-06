@@ -108,10 +108,18 @@ li a {
   float: right;
 }
 
-/* #game {
-  display: none;
-} */
+#dogPic img {
+  width: 100%;
+}
 
-#startScreen {
+#humanPic img {
+  width: 100%;
+}
+
+#game {
   display: none;
 }
+
+/* #startScreen {
+  display: none;
+} */

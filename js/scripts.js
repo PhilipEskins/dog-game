@@ -187,6 +187,33 @@ function playDog() {
   }
 }
 
+//Pet Store function
+function purchaseToys(human, item) {
+  var petStore = new PetStore();
+  var toy;
+  if (item === "rope") {
+    toy = petStore.rope;
+  }
+  if (item === "ball") {
+    toy = petStore.ball;
+  }
+  if (item === "plush") {
+    toy = petStore.plush;
+  }
+  for (var i = 0; i < human.inventory.length; i++) {
+    human.inventory[i].Name === "Squeak Toy";
+    console.log("You already own that");
+    break;
+  }
+
+  if (human.money >= toy.cost) {
+    human.inventory.push(toy);
+    human.money -= toy.cost;
+  } else {
+    console.log("You can't afford that");
+  }
+}
+
 //End of game
 function checkEnd() {
   if(timer.hour === 21) {
@@ -204,8 +231,8 @@ function checkEnd() {
       human.money += 0;
     }
     timer.status = "ended";
+    gameTime(timer.status);
   }
-  gameTime(timer.status);
 }
 
 //UI Logic
@@ -257,7 +284,6 @@ $(document).ready(function() {
     var blocks = $("#blocks").val();
     dogWalk(blocks);
   })
-})
 
   $("#walkDog").click(function(event){
     var blocks = parseInt($("#blocks option:selected").text());
@@ -271,9 +297,8 @@ $(document).ready(function() {
   $("#playDog").click(function(event){
     playDog();
     console.log(dog.status);
-    });
+  });
   $("#pupEnergyLevel").click(function(event){
 
-  }
-
-  });
+  })
+});
