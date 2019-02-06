@@ -67,12 +67,23 @@
     <div id="game">
       <div class="container">
         <div class="row">
-          <div class="col-md-3"><span id="humanName"></span></div>
-          <div class="col-md-6"><span id="timeRemaining"></span></div>
-          <div class="col-md-3"><span id="doggieName"></span></div>
+          <div class="col-md-3">
+            <p>Hello, <span id="humanName"></span>!</p>
+          </div>
+          <div class="col-md-6">
+            <p>What time is it?</p>
+            <p><span id="timeRemaining"></span></p>
+          </div>
+          <div class="col-md-3">
+            <p>Sweet <span id="doggieName"></span></p>
+          </div>
         </div>
         <div class="row">
-          <div class="col-md-3"><span id="humanPic"></span></div>
+          <div class="col-md-3">
+            <p>It's you!</p>
+            <p><span id="humanPic"></p>
+            <p>Your energy level: <span id="remainingHumanEnergy"></span></p>
+          </div>
           <div class="col-md-6">
             <button type="click" id="dogPark" name="button">Take Your Dog to Park</button><br>
             <select class="form-control" id="blocks">
@@ -85,8 +96,11 @@
             <button type="click" id="walkDog" name="button">Walk your Dog</button><br>
             <button type="click" id="play" name="button">Play with your Dog</button>
           </div>
-          <div class="col-md-3"><span id="dogPic"></span>
-            <span id="pupEnergyLevel"></span>
+          <div class="col-md-3">
+            <p>Your good boy: </p>
+              <span id="dogPic"></span>
+            <p>Your dog is: <span id="yourDogsStatus"></span></p>
+            <p>Your dog's energy level: <span id="remainingDogEnergy"></span></p>
           </div>
       </div>
     </div>

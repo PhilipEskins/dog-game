@@ -268,10 +268,14 @@ $(document).ready(function() {
     playDog();
     console.log(dog.status);
     });
-function refreshTime(){
+function continueRefreshing(){
   $("#timeRemaining").text(timer.hour + ":00");
+  $("#remainingHumanEnergy").text(human.energy);
+  $("#remainingDogEnergy").text(dog.energy);
+  $("#yourDogsStatus").text(dog.status);
+
 }
-  setInterval(refreshTime, 1000);
+  setInterval(continueRefreshing, 1000);
 
 
 });
