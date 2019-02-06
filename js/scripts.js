@@ -69,7 +69,7 @@ function gameTime(gameStatus) {
     subIntervalHuman = setInterval(subEnergyHuman, 6000);
     checkNap = setInterval(checkEnergy, 3000);
     time = setInterval(addHour, 30000);
-    end = setInterval(checkEnd, 30010);
+    end = setInterval(checkEnd, 30000);
     console.log(end);
   }
 
@@ -178,17 +178,41 @@ function walkDog(blocks) {
 }
 
 //Play with your dog
-function playDog() {
+function playDog(human) {
+  var ballCount = 0;
+  var ropeCount = 0;
+  var plushCount = 0;
+  var extra = 0;
+  for (var i = 0; i < human.inventory.length; i++) {
+    if (human.inventory[i].name === "Squeak Toy") {
+      plushCount++;
+      extra += human.inventory[i].extra;
+    }
+    if (human.inventory[i].name === "Rope") {
+      ropeCount++;
+      extra += human.inventory[i].extra;
+    }
+    if (human.inventory[i].name === "Ball") {
+      ballCount++;
+      extra += human.inventory[i].extra;
+    }
+  }
+
   if (dog.status === "awake") {
-    dog.subEnergy(5, 1);
+    if (extra === 0) {
+      dog.subEnergy(5, 1);
+    } else {
+      dog.subEnergy(5, extra);
+    }
   }
   else {
     console.log("Your dog is napping");
   }
+  console.log(extra);
 }
 
 //Pet Store function
-function purchaseToys(human, item) {
+function purchaseToy(human, item) {
   var petStore = new PetStore();
   var toy;
   if (item === "rope") {
@@ -199,11 +223,6 @@ function purchaseToys(human, item) {
   }
   if (item === "plush") {
     toy = petStore.plush;
-  }
-  for (var i = 0; i < human.inventory.length; i++) {
-    human.inventory[i].Name === "Squeak Toy";
-    console.log("You already own that");
-    break;
   }
 
   if (human.money >= toy.cost) {
