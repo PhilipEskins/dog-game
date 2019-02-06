@@ -250,5 +250,8 @@ $(document).ready(function() {
     playDog();
     console.log(dog.status);
     });
+  $("#pupEnergyLevel").click(function(event){
+
+  }
 
   });
