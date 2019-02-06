@@ -17,7 +17,7 @@ Dog.prototype.subEnergy = function(lump, multi) {
   }
 }
 Dog.prototype.nap = function() {
-  this.energy += 5;
+  this.energy += 10;
 }
 
 //Human Object
@@ -50,14 +50,11 @@ function GroceryStore() {
 
 //Pet Store Object
 function PetStore() {
-  this.rope = {name: "Rope", cost: 5, extra: 2};
-  this.ball = {name: "Ball", cost: 10, extra: 3};
-  this.plush = {name: "Squeak Toy", cost: 15, extra: 4};
+  this.rope = {name: "Rope", cost: 10, extra: 2};
+  this.ball = {name: "Ball", cost: 15, extra: 3};
+  this.plush = {name: "Squeak Toy", cost: 25, extra: 4};
 }
 
-dog = new Dog("Fido", 100, " ", "home");
-human = new Human("Bob", 100, 100, [], "home");
-timer = new Timer(16);
 
 var subIntervalHuman;
 var checkNap;
@@ -105,6 +102,7 @@ function subEnergyHuman() {
 }
 
 //Time function (game resets after 5 hours have passed)
+timer = new Timer(16);
 function addHour() {
   if (timer.hour === 21) {
     timer.hour = 16;
@@ -118,16 +116,20 @@ function addHour() {
 function dogPark() {
   //Generates random number of dogs 0 to 5
   var numOfDogs = Math.floor(Math.random() * 6);
+  var energyLoss = 0;
   if (timer.hour >= 19) {
     console.log("Its too late");
   } else if (dog.energy <= 50 || dog.status === "sleeping") {
       console.log("Your dog is too tired");
   } else if (numOfDogs === 0) {
-      dog.subEnergy(20, 1);
+      dog.subEnergy(10, 1);
+      energyLoss = 10 *1;
   } else {
-    dog.subEnergy(20, numOfDogs);
+    dog.subEnergy(15, numOfDogs);
+    energyLoss = 15 * numOfDogs;
   }
-  return numOfDogs;
+  var dogParkFun = [numOfDogs, energyLoss]
+  return dogParkFun;
 }
 
 //Walk the dog function
@@ -137,43 +139,41 @@ function walkDog(blocks) {
       console.log("Its too late");
     }
     else if (blocks === 5) {
+      var mindRead;
       if (dog.energy <= 60) {
-        console.log("Your dog is too tired");
+        return mindRead = true;
       } else {
         dog.subEnergy(10, blocks);
       }
     }
     else if (blocks === 4) {
       if (dog.energy <= 50) {
-        console.log("Your dog is too tired");
+        return mindRead = true;
       } else {
         dog.subEnergy(10, blocks);
       }
     }
     else if (blocks === 3) {
       if (dog.energy <= 40) {
-        console.log("Your dog is too tired");
+        return mindRead = true;
       } else {
         dog.subEnergy(10, blocks);
       }
     }
     else if (blocks === 2) {
       if (dog.energy <= 30) {
-        console.log("Your dog is too tired");
+        return mindRead = true;
       } else {
         dog.subEnergy(10, blocks);
       }
     }
     else if (blocks === 1) {
       if (dog.energy <= 20) {
-        console.log("Your dog is too tired");
+        return mindRead = true;
       } else {
         dog.subEnergy(10, blocks);
       }
     }
-  }
-  else {
-    console.log("Your dog is napping");
   }
 }
 
@@ -229,20 +229,21 @@ function purchaseToy(human, item) {
     human.inventory.push(toy);
     human.money -= toy.cost;
   } else {
-    console.log("You can't afford that");
+    return false;
   }
 }
 
 //End of game
 function checkEnd() {
   if(timer.hour === 21) {
+    $("#gameOver").show();
     if(dog.energy <= 10) {
       $("#gameResult").text("You and your dog got a good nights rest");
       human.money += 200;
-    } else if(dog.energy > 10 && dog.energy < 50) {
+    } else if(dog.energy > 10 && dog.energy <= 50) {
       $("#gameResult").text("Your dog was restless causing your sleep to be a little interrupted.");
       human.money += 150;
-    } else if (dog.energy > 50 && dog.energy < 90) {
+    } else if (dog.energy > 50 && dog.energy <= 90) {
       $("#gameResult").text("Your dog was very restless causing your sleep to be mostly interrupted.");
       human.money += 50;
     } else if (dog.energy >= 90) {
@@ -253,8 +254,6 @@ function checkEnd() {
     gameTime(timer.status);
   }
 }
-
-
 
 //UI Logic
 
@@ -268,9 +267,12 @@ $(document).ready(function() {
     var ownerChar = $("input:radio[name=owner]:checked").val();
     var dogInput = $("input#dogName").val();
     var dogChar = $("input:radio[name=pup]:checked").val();
-    $("#humanName").text(ownerInput);
-    $("#doggieName").text(dogInput);
+    dog = new Dog(dogInput, 100, " ", "home");
+    human = new Human(ownerInput, 25, 100, [], "home");
+    $("#humanName").text(human.name);
+    $(".doggieName").text(dog.name);
     gameTime(timer.status);
+
 
     if (ownerChar === "1") {
       $("#humanPic").append('<img src="img/woman1.png" alt="Human Female">');
@@ -300,28 +302,81 @@ $(document).ready(function() {
   })
 
   $("#walkDog").click(function(event){
+    if (timer.hour >= 20) {
+      $("#walkLate").show();
+      $("#dogNapping").hide();
+    } else if (dog.status === "sleeping"){
+      $("dogNapping").show();
+      $("#walkLate").hide();
+    }
     var blocks = parseInt($("#blocks option:selected").text());
-      walkDog(blocks);
+      var walkDog(blocks);
       console.log(dog.energy);
     });
   $("#dogPark").click(function(event){
-    dogPark();
-    console.log(dog.energy);
+    if (timer.hour >= 19) {
+      $("#dogParkClosed").show();
+      $("#dogs").hide();
+      $("#parkenergy").hide();
+      $("#dogNapping").hide();
+    } else if (dog.status === "sleeping") {
+      $("#dogParkClosed").hide();
+      $("#dogs").hide();
+      $("#parkenergy").hide();
+      $("#dogNapping").show();
+    } else {
+      var dogParkResults = dogPark();
+      $("#dogParkClosed").hide();
+      $("#dogNapping").hide();
+      $("#numberDogs").text(dogParkResults[0]);
+      $("#energyResults").text(dogParkResults[1]);
+      $("#dogs").show();
+      $("#parkenergy").show();
+      }
     });
   $("#play").click(function(event){
-    playDog();
+    playDog(human);
     console.log(dog.status);
 
    });
+   $("#restartDay").click(function(event){
+     restartDay();
+     $("#gameOver").hide();
+   });
 
-
+   function restartDay(){
+     if(timer.hour === 21){
+       $("#restartDay").show();
+       timer.status = "active";
+       human.energy = 100;
+       dog.energy = 100;
+       gameTime(timer.status);
+     }
+   }
 function continueRefreshing(){
   $("#timeRemaining").text(timer.hour + ":00");
   $("#remainingHumanEnergy").text(human.energy);
   $("#remainingDogEnergy").text(dog.energy);
   $("#yourDogsStatus").text(dog.status);
+  $("#remainingMoney").text(human.money);
 
 }
-  setInterval(continueRefreshing, 1000);
+  setInterval(continueRefreshing, 100);
 
+  $("#ropeClick").click(function(event){
+    var ropeBuy = purchaseToy(human, "rope");
+    if (ropeBuy === false) {
+      console.log("You can't afford that");
+    } else {
+    $("#ropeToy").hide();
+    }
+  });
+  $("#ballClick").click(function(event){
+    purchaseToy(human, "ball");
+    $("#ballToy").hide();
+  });
+  $("#squeakClick").click(function(event){
+    purchaseToy(human, "plush");
+    $("#squeakToy").hide();
+  });
 });

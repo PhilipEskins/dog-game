@@ -8,7 +8,7 @@ body {
   font-family: PT serif;
   background:  url("../img/bluepups.png");
 }
-ul {
+/* ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -24,7 +24,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-}
+} */
 .well {
   text-align: center;
   color: white;
@@ -84,7 +84,7 @@ li a {
 }
 #lowerMiddleBlock {
   background-color: #CCCBB1;
-  height: 1000px;
+  height: 1500px;
   text-align: center;
   border-style: solid;
   border-width: 5px;
@@ -94,7 +94,7 @@ li a {
 }
 #lowerOuterBlocks {
   background-color: #CCCBB1;
-  height: 1000px;
+  height: 1500px;
   text-align: center;
   border-style: solid;
   border-width: 5px;
@@ -118,12 +118,7 @@ li a {
   width: 250px;
   align: center;
 } */
-#humanName{
-  float: left;
-}
-#pupName{
-  float: right;
-}
+
 /* #startScreen{
   display: none;
 } */
@@ -134,6 +129,47 @@ input[type="radio"]{
   display: none;
 }
 
+#humanPic img {
+  width: 100%;
+}
+
+#dogPic img {
+  width: 100%;
+}
+
+#toys img {
+  display: inline-grid;
+  width: 100px;
+  height: 100px;
+  text-align: left;
+}
+#toypics column {
+  width: 33.33%
+}
+
+#gameOver {
+  display: none;
+}
+
+#dogs {
+  display: none;
+}
+
+#parkenergy {
+  display: none;
+}
+
+#dogParkClosed {
+  display: none;
+}
+
+#dogNapping {
+  display: none;
+}
+
+#walkLate {
+  display: none;
+}
 /* #startScreen {
   display: none;
 } */

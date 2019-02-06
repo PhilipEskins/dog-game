@@ -10,11 +10,11 @@
     <title>Dog Owner Simulator</title>
   </head>
   <body>
-    <ul>
+    <!-- <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="contact-us.html">Contact Us</a></li>
       <li><a href="about-us.html">About</a></li>
-    </ul>
+    </ul> -->
     <br>
     <div class="container" id="startScreen">
       <div class="split right">
@@ -35,7 +35,7 @@
                   <img src="img/icon2.png" alt="woman" height="42" width="42">
                   <img src="img/icon3.png" alt="woman" height="42" width="42">
                   <br>
-                  <input type="radio" name="owner" id="face1" value="1">
+                  <input type="radio" name="owner" id="face1" value="1" checked>
                   <input type="radio" name="owner" id="face2" value="2">
                   <input type="radio" name="owner" id="face3" value="3">
                 </div>
@@ -49,7 +49,7 @@
                   <img src="img/pup2.png" alt="pup" height="42" width="42">
                   <img src="img/pup3.png" alt="pup" height="42" width="42">
                   <br>
-                  <input type="radio" name="pup" id="pup1" value="1">
+                  <input type="radio" name="pup" id="pup1" value="1" checked>
                   <input type="radio" name="pup" id="pup2" value="2">
                   <input type="radio" name="pup" id="pup3" value="3">
                 </div>
@@ -70,14 +70,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <p>Hello, <span id="humanName"></span></p>
+            <p>Hello, <span id="humanName">!</span></p>
           </div>
           <div class="col-md-6">
             <p>What time is it?</p>
             <p><span id="timeRemaining"></span></p>
           </div>
           <div class="col-md-3">
-            <p>Sweet <span id="doggieName"></span></p>
+            <p>Sweet <span class="doggieName"></span></p>
           </div>
         </div>
         <div class="row">
@@ -85,17 +85,18 @@
             <p>It's you!</p>
             <p><span id="humanPic"></p>
             <p>Your energy level: <span id="remainingHumanEnergy"></span></p>
+            <p>Current funds: $<span id="remainingMoney"></span></p>
           </div>
           <div class="col-md-6" id="lowerMiddleBlock">
             <p><em>Here is where you will choose what activities to participate in with your sweet pup. </em></p>
             <hr>
             <h2>Activities:</h2>
             <br>
-            <h4>Is your dog awake? Let's check.</h4>
+            <h4>Have some fun with your dog at home. If you have a toy your dog's energy will be drained more.</h4>
             <button type="click" id="play" name="button">Play with your Dog</button>
             <br>
             <br>
-            <h4>Let's go for a walk! Choose how many blocks you'd like to go with <span id="doggieName"></span>.</h4>
+            <h4>Let's go for a walk! Choose how many blocks you'd like to go with <span class="doggieName"></span>. You shouldn't go out with your dog after 20:00.</h4>
             <select class="form-control" id="blocks">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -104,13 +105,41 @@
               <option value="5">5</option>
             </select>
             <button type="click" id="walkDog" name="button">Walk your Dog</button>
+            <p id="walkLate">It's too late to walk your dog, its not safe.</p>
             <br>
             <br>
-            <h4>Take your pup to the park! Depending on how many other dogs are there, your pup might tire themselves out in no time.</h4>
+            <h4>Take your pup to the park! Depending on how many other dogs are there, your pup might tire themselves out in no time. Your dog will need to have over 50 energy to play at the dog park. The dog park closes at 19:00 hours.</h4>
             <button type="click" id="dogPark" name="button">Take Your Dog to Park</button>
+            <p id="dogParkClosed">Dog park is currently closed</p>
+            <p id="dogs">There where <span id="numberDogs"></span> dogs at the dog park.</p>
+            <p id="parkenergy">Your puppy lost <span id="energyResults"></span> energy</p>
+            <p id="dogNapping"><span class="doggieName"></span> is currently napping</p>
             <br>
+                <div id="toys">
+                  <div id="ropeToy">
+                    <img src="img/rope.png" alt="rope">
+                    <button type="click" id="ropeClick" name="button">Cost $10</button>
+                  </div>
+
+
+                <div id="ballToy">
+                  <img src="img/ball.png" alt="ball">
+                  <button type="click" id="ballClick" name="button">Cost $15</button>
+                </div>
+
+
+                <div id="squeakToy">
+                  <img src="img/squeak.png" alt="squeaky toy">
+                  <button type="click" id="squeakClick" name="button">Cost $25</button>
+                </div>
+
+
+          </div>
+          <div id="gameOver">
             <h2>Game Result:
               <br><span id="gameResult"></span></h2>
+              <button type="click" id="restartDay" name="button">A New Day</button>
+            </div>
           </div>
           <div class="col-md-3" id="lowerOuterBlocks">
             <p>Your good boy: </p>
@@ -120,6 +149,7 @@
           </div>
       </div>
     </div>
+  </div>
 
   </body>
 </html>
