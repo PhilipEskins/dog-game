@@ -265,7 +265,7 @@ $(document).ready(function() {
     var dogChar = $("input:radio[name=pup]:checked").val();
     //Create new objects
     dog = new Dog(dogInput, 100, " ", "home");
-    human = new Human(ownerInput, 25, 100, [], "home");
+    human = new Human(ownerInput, 25, 50, [], "home");
     $("#humanName").text(human.name);
     //Puts your doggies name everywhere its referanced
     $(".doggieName").text(dog.name);
@@ -294,9 +294,7 @@ $(document).ready(function() {
 
   });
 
-  //This will hide a bunch of things after 10 seconds
-  setInterval(hide, 10000)
-
+  //This will hide a bunch of things
   function hide() {
     $("#dogs").hide();
     $("#parkenergy").hide();
@@ -312,25 +310,32 @@ $(document).ready(function() {
   $("#walkDog").click(function(event){
     var blocks = parseInt($("#blocks option:selected").text());
     if (timer.hour >= 20) {
+      hide();
       $("#walkLate").show();
     } else if (dog.status === "sleeping"){
-        $("#dogNapping").show();
+      hide();
+      $("#dogNapping").show();
     } else if (walkDog(blocks) === true) {
-        $("#walkEnergy").show();
-      }
+      hide();
+      $("#walkEnergy").show();
+    }
   });
 
   //Dog park button
   $("#dogPark").click(function(event){
     if (timer.hour >= 19) {
+      hide();
       $("#dogParkClosed").show();
     }
      else if (dog.status === "sleeping") {
+      hide();
       $("#dogNapping").show();
     } else if (dog.energy <= 50) {
+      hide();
       $("#parkLowEnergy").show();
     } else {
       var dogParkResults = dogPark();
+      hide();
       $("#numberDogs").text(dogParkResults[0]);
       $("#energyResults").text(dogParkResults[1]);
       $("#dogs").show();
@@ -341,9 +346,11 @@ $(document).ready(function() {
   //Play with dog button
   $("#play").click(function(event){
     if (dog.status === "sleeping") {
+      hide();
       $("#dogNapping").show();
     } else {
       var getExtra = playDog(human);
+      hide();
       $("#showExtra").show();
       $("#extra").text(getExtra);
     }
@@ -358,6 +365,7 @@ $(document).ready(function() {
   //Restart the day, it starts again at 16:00
  function restartDay(){
    if(timer.hour === 21){
+     hide();
      $("#restartDay").show();
      timer.status = "active";
      human.energy = 50;

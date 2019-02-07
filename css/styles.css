@@ -106,6 +106,16 @@ input[type="radio"]{
   margin: 0 15px 0 15px;
 }
 
+#dognapping {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+#game {
+  display: none;
+}
+
+
 #humanPic img {
   width: 100%;
 }
