@@ -233,6 +233,10 @@ function purchaseToy(human, item) {
   }
 }
 
+function progressBar (remainingDogEnergy) {
+  var bar = document.getElementByID("remainingDogEnergy");
+}
+
 //End of game
 function checkEnd() {
   if(timer.hour === 21) {
