@@ -92,7 +92,7 @@
             <hr>
             <h2>Activities:</h2>
             <br>
-            <h4>Have some fun with your dog at home. If you have a toy your dog's energy will be drained more.</h4>
+            <h4>Have some fun with <span class="doggieName"></span> at home. If you have a toy your dog's energy will be drained more.</h4>
             <button type="click" id="play" name="button">Play with your Dog</button>
             <br>
             <br>
@@ -105,16 +105,18 @@
               <option value="5">5</option>
             </select>
             <button type="click" id="walkDog" name="button">Walk your Dog</button>
-            <p id="walkLate">It's too late to walk your dog, its not safe.</p>
+            <p id="walkLate">It's too late to walk, its not safe.</p>
+            <p id="walkEnergy"><span class="doggieName"></span> knows your intentions, they don't want to walk that far.</p>
             <br>
             <br>
             <h4>Take your pup to the park! Depending on how many other dogs are there, your pup might tire themselves out in no time. Your dog will need to have over 50 energy to play at the dog park. The dog park closes at 19:00 hours.</h4>
             <button type="click" id="dogPark" name="button">Take Your Dog to Park</button>
             <p id="dogParkClosed">Dog park is currently closed</p>
             <p id="dogs">There where <span id="numberDogs"></span> dogs at the dog park.</p>
-            <p id="parkenergy">Your puppy lost <span id="energyResults"></span> energy</p>
+            <p id="parkenergy"><span class="doggieName"></span> lost <span id="energyResults"></span> energy</p>
             <p id="dogNapping"><span class="doggieName"></span> is currently napping</p>
             <br>
+            <p id="storeStatus">
                 <div id="toys">
                   <div id="ropeToy">
                     <img src="img/rope.png" alt="rope">
@@ -142,9 +144,9 @@
             </div>
           </div>
           <div class="col-md-3" id="lowerOuterBlocks">
-            <p>Your good boy: </p>
+            <p>Your awesome pup: </p>
               <span id="dogPic"></span>
-            <p>Your dog is: <span id="yourDogsStatus"></span></p>
+            <p>Your dog is currently: <span id="yourDogsStatus"></span></p>
             <p>Your dog's energy level: <span id="remainingDogEnergy"></span></p>
           </div>
       </div>

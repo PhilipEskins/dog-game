@@ -170,6 +170,10 @@ input[type="radio"]{
 #walkLate {
   display: none;
 }
+
+#walkEnergy {
+  display: none;
+}
 /* #startScreen {
   display: none;
 } */
