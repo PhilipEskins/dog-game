@@ -6,25 +6,8 @@ h1 {
 }
 body {
   font-family: PT serif;
-  background:  url("../img/bluepups.png");
+  background:  url("../img/doggie.jpg");
 }
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-li {
-  float: left;
-}
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-} */
 .well {
   text-align: center;
   color: white;
@@ -33,6 +16,10 @@ li a {
   display: block;
   margin: 0 auto;
   }
+.well button {
+  color: black;
+}
+
 .jumbotron {
   color: #FFFFFF;
   background-color: #3C677C;
@@ -114,14 +101,7 @@ li a {
   padding-bottom: 10px;
   padding-left: 10px;
 }
-/* #blocks{
-  width: 250px;
-  align: center;
-} */
 
-/* #startScreen{
-  display: none;
-} */
 input[type="radio"]{
   margin: 0 15px 0 15px;
 }
@@ -137,6 +117,10 @@ input[type="radio"]{
   width: 100%;
 }
 
+#toys {
+  padding-top: 30px;
+}
+
 #toys img {
   display: inline-grid;
   width: 100px;
@@ -147,33 +131,10 @@ input[type="radio"]{
   width: 33.33%
 }
 
-#gameOver {
+#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy, #ropeDog, #ballDog, #plushDog, #showExtra {
   display: none;
 }
 
-#dogs {
-  display: none;
-}
-
-#parkenergy {
-  display: none;
-}
-
-#dogParkClosed {
-  display: none;
-}
-
-#dogNapping {
-  display: none;
-}
-
-#walkLate {
-  display: none;
-}
-
-#walkEnergy {
-  display: none;
-}
 /* #startScreen {
   display: none;
 } */
