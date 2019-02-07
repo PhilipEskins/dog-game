@@ -60,7 +60,7 @@
         </div>
       <div class="split left">
         <div class="centered">
-          <img src="img/isabelle.png" alt="Isabelle">
+          <img src="img/isabelle.png" alt="Isabelle" id="frontPic">
         </div>
       </div>
     </div>
@@ -85,6 +85,9 @@
             <p>It's you!</p>
             <p><span id="humanPic"></p>
             <p>Your energy level: <span id="remainingHumanEnergy"></span></p>
+            <div id="humanProgress">
+              <div id="humanBar"></div>
+            </div>
             <p>Current funds: $<span id="remainingMoney"></span></p>
           </div>
           <div class="col-md-6" id="lowerMiddleBlock">
@@ -121,8 +124,10 @@
             <p id="dogs">There where <span id="numberDogs"></span> dogs at the dog park.</p>
             <p id="parkenergy"><span class="doggieName"></span> lost <span id="energyResults"></span> energy</p>
             <p id="dogNapping"><span class="doggieName"></span> is currently napping</p>
-
             <div id="toys">
+              <div id="afford">
+                <span>You can't afford this toy!</span>
+              </div>
               <div id="ropeToy">
                 <img src="img/rope.png" alt="rope">
                 <button type="click" id="ropeClick" name="button">Cost $10</button>
@@ -135,6 +140,7 @@
                 <img src="img/squeak.png" alt="squeaky toy">
                 <button type="click" id="squeakClick" name="button">Cost $25</button>
               </div>
+
             </div>
           </div>
           <div class="col-md-3" id="lowerOuterBlocks">
@@ -142,6 +148,9 @@
             <span id="dogPic"></span>
             <p>Your dog is currently: <span id="yourDogsStatus"></span></p>
             <p>Your dog's energy level: <span id="remainingDogEnergy"></span></p>
+            <div id="dogProgress">
+              <div id="dogBar"></div>
+            </div>
             <p id="showExtra">Toy multiplier: <span id="extra"></span></p>
             <img src="img/rope.png" alt="rope" id="ropeDog"><br>
             <img src="img/ball.png" alt="ball" id="ballDog"><br>

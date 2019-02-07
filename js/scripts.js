@@ -289,6 +289,9 @@ $(document).ready(function() {
     else if (dogChar === "3") {
       $("#dogPic").append('<img src="img/pup3.png"  alt="nice pup">');
     }
+    moveDog();
+    moveHuman();
+
   });
 
   //This will hide a bunch of things after 10 seconds
@@ -302,6 +305,7 @@ $(document).ready(function() {
     $("#walkLate").hide();
     $("#walkEnergy").hide();
     $("#parkLowEnergy").hide();
+    $("#afford").hide();
   }
 
   //Walk the dog button
@@ -356,12 +360,32 @@ $(document).ready(function() {
    if(timer.hour === 21){
      $("#restartDay").show();
      timer.status = "active";
-     human.energy = 100;
+     human.energy = 50;
      dog.energy = 100;
      timer.hour = 16;
      gameTime(timer.status);
    }
  }
+
+//progress bar dog energy level//
+function moveDog() {
+  var elem = document.getElementById("dogBar");
+  var id = setInterval(frame, 10);
+  function frame() {
+    elem.style.width = dog.energy + '%';
+    elem.innerHTML = dog.energy + '%';
+  }
+}
+
+//progress bar Human Energy Level//
+function moveHuman() {
+  var elem = document.getElementById("humanBar");
+  var id = setInterval(frame, 10);
+  function frame() {
+    elem.style.width = human.energy + '%';
+    elem.innerHTML = human.energy + '%';
+  }
+}
 
  //Constantly updating dynamic values
   function continueRefreshing(){
@@ -377,7 +401,7 @@ $(document).ready(function() {
   $("#ropeClick").click(function(event){
     var ropeBuy = purchaseToy(human, "rope");
     if (ropeBuy === false) {
-      console.log("You can't afford that");
+      $("#afford").show();
     } else {
     $("#ropeToy").hide();
     $("#ropeDog").show();
@@ -387,7 +411,7 @@ $(document).ready(function() {
   $("#ballClick").click(function(event){
     var ballBuy = purchaseToy(human, "ball");
     if (ballBuy === false) {
-      console.log("You can't afford that")
+      $("#afford").show();
     } else {
       $("#ballToy").hide();
       $("#ballDog").show();
@@ -397,7 +421,7 @@ $(document).ready(function() {
   $("#squeakClick").click(function(event){
     var squeakBuy = purchaseToy(human, "plush")
     if (squeakBuy === false) {
-      console.log("You can't afford that")
+      $("#afford").show();
     } else {
       $("#squeakToy").hide();
       $("#plushDog").show();
