@@ -6,25 +6,8 @@ h1 {
 }
 body {
   font-family: PT serif;
-  background:  url("../img/bluepups.png");
+  background:  url("../img/doggie.jpg");
 }
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-li {
-  float: left;
-}
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-} */
 .well {
   text-align: center;
   color: white;
@@ -148,7 +131,7 @@ input[type="radio"]{
   width: 33.33%
 }
 
-#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy {
+#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy, #ropeDog, #ballDog, #plushDog, #showExtra {
   display: none;
 }
 

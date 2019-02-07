@@ -56,11 +56,13 @@ function PetStore() {
 }
 
 
+//Global variables to start and stop the game
 var subIntervalHuman;
 var checkNap;
 var time;
 var end;
 
+//function to start and stop the game
 function gameTime(gameStatus) {
   if (gameStatus === "active") {
     subIntervalHuman = setInterval(subEnergyHuman, 6000);
@@ -197,15 +199,12 @@ function playDog(human) {
 
   if (dog.status === "awake") {
     if (extra === 0) {
-      dog.subEnergy(5, 1);
+      dog.subEnergy(1, 1);
     } else {
-      dog.subEnergy(5, extra);
+      dog.subEnergy(1, extra);
     }
   }
-  else {
-    console.log("Your dog is napping");
-  }
-  console.log(extra);
+  return extra;
 }
 
 //Pet Store function
@@ -264,13 +263,16 @@ $(document).ready(function() {
     var ownerChar = $("input:radio[name=owner]:checked").val();
     var dogInput = $("input#dogName").val();
     var dogChar = $("input:radio[name=pup]:checked").val();
+    //Create new objects
     dog = new Dog(dogInput, 100, " ", "home");
     human = new Human(ownerInput, 25, 100, [], "home");
     $("#humanName").text(human.name);
+    //Puts your doggies name everywhere its referanced
     $(".doggieName").text(dog.name);
+    //Stars the game
     gameTime(timer.status);
 
-
+    //Attach pictures to human and dog
     if (ownerChar === "1") {
       $("#humanPic").append('<img src="img/woman1.png" alt="Human Female">');
     }else if (ownerChar === "2") {
@@ -279,7 +281,6 @@ $(document).ready(function() {
     else if (ownerChar === "3") {
       $("#humanPic").append('<img src="img/icon3.png"  alt="Female3">');
     }
-
     if (dogChar === "1") {
       $("#dogPic").append('<img src="img/pup1.png" alt="nice pup">');
     }else if (dogChar === "2") {
@@ -290,6 +291,7 @@ $(document).ready(function() {
     }
   });
 
+  //This will hide a bunch of things after 10 seconds
   setInterval(hide, 10000)
 
   function hide() {
@@ -302,6 +304,7 @@ $(document).ready(function() {
     $("#parkLowEnergy").hide();
   }
 
+  //Walk the dog button
   $("#walkDog").click(function(event){
     var blocks = parseInt($("#blocks option:selected").text());
     if (timer.hour >= 20) {
@@ -313,6 +316,7 @@ $(document).ready(function() {
       }
   });
 
+  //Dog park button
   $("#dogPark").click(function(event){
     if (timer.hour >= 19) {
       $("#dogParkClosed").show();
@@ -327,64 +331,76 @@ $(document).ready(function() {
       $("#energyResults").text(dogParkResults[1]);
       $("#dogs").show();
       $("#parkenergy").show();
-      }
-    });
+    }
+  });
+
+  //Play with dog button
   $("#play").click(function(event){
     if (dog.status === "sleeping") {
       $("#dogNapping").show();
     } else {
-      playDog(human);
-      console.log(dog.status);
+      var getExtra = playDog(human);
+      $("#showExtra").show();
+      $("#extra").text(getExtra);
     }
   });
 
-    $("#restartDay").click(function(event){
-       restartDay();
-       $("#gameOver").hide();
-    });
+  //Restart button
+  $("#restartDay").click(function(event){
+     restartDay();
+     $("#gameOver").hide();
+  });
 
-   function restartDay(){
-     if(timer.hour === 21){
-       $("#restartDay").show();
-       timer.status = "active";
-       human.energy = 100;
-       dog.energy = 100;
-       timer.hour = 16;
-       gameTime(timer.status);
-     }
+  //Restart the day, it starts again at 16:00
+ function restartDay(){
+   if(timer.hour === 21){
+     $("#restartDay").show();
+     timer.status = "active";
+     human.energy = 100;
+     dog.energy = 100;
+     timer.hour = 16;
+     gameTime(timer.status);
    }
-function continueRefreshing(){
-  $("#timeRemaining").text(timer.hour + ":00");
-  $("#remainingHumanEnergy").text(human.energy);
-  $("#remainingDogEnergy").text(dog.energy);
-  $("#yourDogsStatus").text(dog.status);
-  $("#remainingMoney").text(human.money);
+ }
 
-}
+ //Constantly updating dynamic values
+  function continueRefreshing(){
+    $("#timeRemaining").text(timer.hour + ":00");
+    $("#remainingHumanEnergy").text(human.energy);
+    $("#remainingDogEnergy").text(dog.energy);
+    $("#yourDogsStatus").text(dog.status);
+    $("#remainingMoney").text(human.money);
+  }
   setInterval(continueRefreshing, 100);
 
+  //Buy a rope
   $("#ropeClick").click(function(event){
     var ropeBuy = purchaseToy(human, "rope");
     if (ropeBuy === false) {
       console.log("You can't afford that");
     } else {
     $("#ropeToy").hide();
+    $("#ropeDog").show();
     }
   });
+  //Buy a ball
   $("#ballClick").click(function(event){
     var ballBuy = purchaseToy(human, "ball");
     if (ballBuy === false) {
       console.log("You can't afford that")
     } else {
       $("#ballToy").hide();
+      $("#ballDog").show();
     }
   });
+  //Buy a plush toy
   $("#squeakClick").click(function(event){
     var squeakBuy = purchaseToy(human, "plush")
     if (squeakBuy === false) {
       console.log("You can't afford that")
     } else {
       $("#squeakToy").hide();
+      $("#plushDog").show();
     }
   });
 });
