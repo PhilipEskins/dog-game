@@ -115,6 +115,7 @@ input[type="radio"]{
   display: none;
 }
 
+
 #humanPic img {
   width: 100%;
 }
@@ -137,10 +138,61 @@ input[type="radio"]{
   width: 33.33%
 }
 
-#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy, #ropeDog, #ballDog, #plushDog, #showExtra {
+#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy, #ropeDog, #ballDog, #plushDog, #showExtra, #game, #afford {
   display: none;
 }
 
+#afford {
+  padding-bottom: 25px;
+}
+
+/* #dogNapping {
+  color: red;
+} */
+
+#dogProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#dogBar {
+  width: 100%;
+  height: 30px;
+  background-color: green;
+  color: lightblue;
+}
+
+#humanProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+#humanBar {
+  width: 50%;
+  height: 30px;
+  background-color: blue;
+  color: white;
+}
+
+@media only screen and (max-width: 1070px) {
+  #frontPic {
+    width: 30em;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  #humanPic, #dogPic {
+    display: none;
+  }
+}
 /* #startScreen {
   display: none;
 } */
