@@ -67,7 +67,6 @@ function gameTime(gameStatus) {
     checkNap = setInterval(checkEnergy, 3000);
     time = setInterval(addHour, 30000);
     end = setInterval(checkEnd, 30000);
-    console.log(end);
   }
 
   if (gameStatus === "ended") {
@@ -75,8 +74,6 @@ function gameTime(gameStatus) {
     clearInterval(checkNap);
     clearInterval(time);
     clearInterval(end);
-    console.log(gameStatus);
-    console.log(end);
   }
 }
 
@@ -134,12 +131,12 @@ function dogPark() {
 
 //Walk the dog function
 function walkDog(blocks) {
+  var mindRead;
   if (dog.status === "awake") {
     if(timer.hour >=20) {
       console.log("Its too late");
     }
     else if (blocks === 5) {
-      var mindRead;
       if (dog.energy <= 60) {
         return mindRead = true;
       } else {
@@ -238,17 +235,17 @@ function checkEnd() {
   if(timer.hour === 21) {
     $("#gameOver").show();
     if(dog.energy <= 10) {
-      $("#gameResult").text("You and your dog got a good nights rest");
+      $("#gameResult").text("You and your dog got a good nights rest. You earned $25.");
       human.money += 25;
     } else if(dog.energy > 10 && dog.energy <= 50) {
-      $("#gameResult").text("Your dog was restless causing your sleep to be a little interrupted.");
+      $("#gameResult").text("Your dog was restless causing your sleep to be a little interrupted. You earned $15.");
       human.money += 15;
     } else if (dog.energy > 50 && dog.energy <= 90) {
-      $("#gameResult").text("Your dog was very restless causing your sleep to be mostly interrupted.");
+      $("#gameResult").text("Your dog was very restless causing your sleep to be mostly interrupted. You earned $10.");
       human.money += 10;
     } else if (dog.energy >= 90) {
-      $("#gameResult").text("Your dog was still active, you had to stay up all night so you needed to call in sick for work.");
-      human.money += 0;
+      $("#gameResult").text("Your dog was still active, you had to stay up all night so you needed to call in sick for work. You didn't earn anything today.");
+      human.money += 0
     }
     timer.status = "ended";
     gameTime(timer.status);
@@ -293,41 +290,39 @@ $(document).ready(function() {
     }
   });
 
+  setInterval(hide, 10000)
+
+  function hide() {
+    $("#dogs").hide();
+    $("#parkenergy").hide();
+    $("#dogParkClosed").hide();
+    $("#dogNapping").hide();
+    $("#walkLate").hide();
+    $("#walkEnergy").hide();
+    $("#parkLowEnergy").hide();
+  }
+
   $("#walkDog").click(function(event){
-    var walkResult = walkDog(blocks);
     var blocks = parseInt($("#blocks option:selected").text());
     if (timer.hour >= 20) {
       $("#walkLate").show();
-      $("#dogNapping").hide();
     } else if (dog.status === "sleeping"){
         $("#dogNapping").show();
-        $("#walkLate").hide();
-    } else if (walkResult === true) {
+    } else if (walkDog(blocks) === true) {
         $("#walkEnergy").show();
-    } else {
-        $("#dogNapping").hide();
-        $("#walkLate").hide();
-        $("#walkEnergy").hide();
-        console.log(dog.energy);
       }
-    });
+  });
 
   $("#dogPark").click(function(event){
     if (timer.hour >= 19) {
       $("#dogParkClosed").show();
-      $("#dogs").hide();
-      $("#parkenergy").hide();
-      $("#dogNapping").hide();
     }
      else if (dog.status === "sleeping") {
-      $("#dogParkClosed").hide();
-      $("#dogs").hide();
-      $("#parkenergy").hide();
       $("#dogNapping").show();
+    } else if (dog.energy <= 50) {
+      $("#parkLowEnergy").show();
     } else {
       var dogParkResults = dogPark();
-      $("#dogParkClosed").hide();
-      $("#dogNapping").hide();
       $("#numberDogs").text(dogParkResults[0]);
       $("#energyResults").text(dogParkResults[1]);
       $("#dogs").show();
@@ -335,14 +330,18 @@ $(document).ready(function() {
       }
     });
   $("#play").click(function(event){
-    playDog(human);
-    console.log(dog.status);
+    if (dog.status === "sleeping") {
+      $("#dogNapping").show();
+    } else {
+      playDog(human);
+      console.log(dog.status);
+    }
+  });
 
-   });
-   $("#restartDay").click(function(event){
-     restartDay();
-     $("#gameOver").hide();
-   });
+    $("#restartDay").click(function(event){
+       restartDay();
+       $("#gameOver").hide();
+    });
 
    function restartDay(){
      if(timer.hour === 21){
@@ -352,13 +351,6 @@ $(document).ready(function() {
        dog.energy = 100;
        timer.hour = 16;
        gameTime(timer.status);
-       $("#gameOver").hide();
-       $("#dogs").hide();
-       $("#parkenergy").hide();
-       $("#dogParkClosed").hide();
-       $("#dogNapping").hide();
-       $("#walkLate").hide();
-       $("#walkEnergy").hide();
      }
    }
 function continueRefreshing(){

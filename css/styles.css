@@ -33,6 +33,10 @@ li a {
   display: block;
   margin: 0 auto;
   }
+.well button {
+  color: black;
+}
+
 .jumbotron {
   color: #FFFFFF;
   background-color: #3C677C;
@@ -114,14 +118,7 @@ li a {
   padding-bottom: 10px;
   padding-left: 10px;
 }
-/* #blocks{
-  width: 250px;
-  align: center;
-} */
 
-/* #startScreen{
-  display: none;
-} */
 input[type="radio"]{
   margin: 0 15px 0 15px;
 }
@@ -137,6 +134,10 @@ input[type="radio"]{
   width: 100%;
 }
 
+#toys {
+  padding-top: 30px;
+}
+
 #toys img {
   display: inline-grid;
   width: 100px;
@@ -147,33 +148,10 @@ input[type="radio"]{
   width: 33.33%
 }
 
-#gameOver {
+#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy {
   display: none;
 }
 
-#dogs {
-  display: none;
-}
-
-#parkenergy {
-  display: none;
-}
-
-#dogParkClosed {
-  display: none;
-}
-
-#dogNapping {
-  display: none;
-}
-
-#walkLate {
-  display: none;
-}
-
-#walkEnergy {
-  display: none;
-}
 /* #startScreen {
   display: none;
 } */
