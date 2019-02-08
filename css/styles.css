@@ -138,7 +138,7 @@ input[type="radio"]{
   width: 33.33%
 }
 
-#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy, #ropeDog, #ballDog, #plushDog, #showExtra, #game, #afford {
+#gameOver, #dogs, #parkenergy, #dogParkClosed, #dogNapping, #walkLate, #walkEnergy, #parkLowEnergy, #ropeDog, #ballDog, #plushDog, #showExtra, #game, #afford, #storeClosed {
   display: none;
 }
 

@@ -20,6 +20,8 @@ _To tire out your dog, you will have options to:_
 3. _Take your Dog to the Park_
 4. _Purchase toys with your current funds to tire out your dog more quickly when you Play with your Dog_
 
+_Playing with your dog, taking your dog to the dog park and buying toys will add time, so be careful! You could spend up to two hours at the dog park depending on how many dogs are there._
+
 _Make sure to check your dog's energy level throughout the evening. Your dog will nap if their energy level reaches 0 before 21:00 and will not wake up again tell they are fully recharged!_
 
 _At the end of the day, you will be able to see how much you have earned and have an option to start a new day_

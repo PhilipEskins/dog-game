@@ -17,7 +17,11 @@ Dog.prototype.subEnergy = function(lump, multi) {
   }
 }
 Dog.prototype.nap = function() {
+  if (this.energy === 100) {
+
+  } else {
   this.energy += 10;
+  }
 }
 
 //Human Object
@@ -68,7 +72,7 @@ function gameTime(gameStatus) {
     subIntervalHuman = setInterval(subEnergyHuman, 6000);
     checkNap = setInterval(checkEnergy, 3000);
     time = setInterval(addHour, 30000);
-    end = setInterval(checkEnd, 30000);
+    end = setInterval(checkEnd, 100);
   }
 
   if (gameStatus === "ended") {
@@ -103,8 +107,8 @@ function subEnergyHuman() {
 //Time function (game resets after 5 hours have passed)
 timer = new Timer(16);
 function addHour() {
-  if (timer.hour === 21) {
-    timer.hour = 16;
+  if (timer.hour >=24) {
+    timer.hour = 24;
   } else {
     timer.hour += 1;
   }
@@ -123,9 +127,11 @@ function dogPark() {
   } else if (numOfDogs === 0) {
       dog.subEnergy(10, 1);
       energyLoss = 10 *1;
+      timer.hour += 1;
   } else {
     dog.subEnergy(15, numOfDogs);
     energyLoss = 15 * numOfDogs;
+    timer.hour += (0.25 * numOfDogs)+1;
   }
   var dogParkFun = [numOfDogs, energyLoss]
   return dogParkFun;
@@ -200,8 +206,10 @@ function playDog(human) {
   if (dog.status === "awake") {
     if (extra === 0) {
       dog.subEnergy(1, 1);
+      timer.hour += 0.25;
     } else {
       dog.subEnergy(1, extra);
+      timer.hour += 0.25;
     }
   }
   return extra;
@@ -211,6 +219,10 @@ function playDog(human) {
 function purchaseToy(human, item) {
   var petStore = new PetStore();
   var toy;
+  var closed = "closed"
+  if (timer.hour >= 19) {
+    return closed;
+  }
   if (item === "rope") {
     toy = petStore.rope;
   }
@@ -224,6 +236,7 @@ function purchaseToy(human, item) {
   if (human.money >= toy.cost) {
     human.inventory.push(toy);
     human.money -= toy.cost;
+    timer.hour += 0.50;
   } else {
     return false;
   }
@@ -231,7 +244,7 @@ function purchaseToy(human, item) {
 
 //End of game
 function checkEnd() {
-  if(timer.hour === 21) {
+  if(timer.hour >= 21) {
     $("#gameOver").show();
     if(dog.energy <= 10) {
       $("#gameResult").text("You and your dog got a good nights rest. You earned $25.");
@@ -243,7 +256,7 @@ function checkEnd() {
       $("#gameResult").text("Your dog was very restless causing your sleep to be mostly interrupted. You earned $10.");
       human.money += 10;
     } else if (dog.energy >= 90) {
-      $("#gameResult").text("Your dog was still active, you had to stay up all night so you needed to call in sick for work. You didn't earn anything today.");
+      $("#gameResult").text("Your dog was still active, you had to stay up all night so you needed to call in sick for work. You didn't earn anything.");
       human.money += 0
     }
     timer.status = "ended";
@@ -291,7 +304,6 @@ $(document).ready(function() {
     }
     moveDog();
     moveHuman();
-
   });
 
   //This will hide a bunch of things
@@ -304,6 +316,7 @@ $(document).ready(function() {
     $("#walkEnergy").hide();
     $("#parkLowEnergy").hide();
     $("#afford").hide();
+    $("#storeClosed").hide();
   }
 
   //Walk the dog button
@@ -364,7 +377,7 @@ $(document).ready(function() {
 
   //Restart the day, it starts again at 16:00
  function restartDay(){
-   if(timer.hour === 21){
+   if(timer.hour >= 21){
      hide();
      $("#restartDay").show();
      timer.status = "active";
@@ -397,7 +410,7 @@ function moveHuman() {
 
  //Constantly updating dynamic values
   function continueRefreshing(){
-    $("#timeRemaining").text(timer.hour + ":00");
+    $("#timeRemaining").text(Math.floor(timer.hour) + ":00");
     $("#remainingHumanEnergy").text(human.energy);
     $("#remainingDogEnergy").text(dog.energy);
     $("#yourDogsStatus").text(dog.status);
@@ -408,7 +421,9 @@ function moveHuman() {
   //Buy a rope
   $("#ropeClick").click(function(event){
     var ropeBuy = purchaseToy(human, "rope");
-    if (ropeBuy === false) {
+    if (ropeBuy === "closed") {
+      $("#storeClosed").show();
+    } else if (ropeBuy === false) {
       $("#afford").show();
     } else {
     $("#ropeToy").hide();
@@ -418,7 +433,9 @@ function moveHuman() {
   //Buy a ball
   $("#ballClick").click(function(event){
     var ballBuy = purchaseToy(human, "ball");
-    if (ballBuy === false) {
+    if (ballBuy === "closed") {
+      $("#storeClosed").show();
+    } else if (ballBuy === false) {
       $("#afford").show();
     } else {
       $("#ballToy").hide();
@@ -428,7 +445,9 @@ function moveHuman() {
   //Buy a plush toy
   $("#squeakClick").click(function(event){
     var squeakBuy = purchaseToy(human, "plush")
-    if (squeakBuy === false) {
+    if (squeakBuy === "closed") {
+      $("#storeClosed").show();
+    } else if (squeakBuy === false) {
       $("#afford").show();
     } else {
       $("#squeakToy").hide();
